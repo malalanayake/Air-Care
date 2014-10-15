@@ -27,7 +27,7 @@ public class UserServiceImplTest {
 	UserService userService;
 
 	@Test
-	public void test() {
+	public void save() {
 		User user = new User();
 		user.setFirstName("Dinuka");
 		user.setLastName("Malalanayake");
@@ -38,6 +38,22 @@ public class UserServiceImplTest {
 		user = userService.saveUser(user);
 
 		assertNotNull(user.getId());
+		System.out.println("User ID" + user.getId());
+	}
+
+	@Test
+	public void getByUserName() {
+		User user = new User();
+		user.setFirstName("Dinuka");
+		user.setLastName("Malalanayake");
+		user.setUsername("dinuka");
+		user.setPassword("dinuka");
+		user.setSequrityQuestion("What is your pet name?");
+		user.setAnswer("jimbo");
+		user = userService.saveUser(user);
+
+		assertNotNull(userService.getUserByID(user.getId()));
+		//assertNotNull(userService.getUserByUserName("dinuka"));
 		System.out.println("User ID" + user.getId());
 	}
 

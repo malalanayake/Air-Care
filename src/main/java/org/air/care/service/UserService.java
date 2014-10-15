@@ -9,6 +9,8 @@ import org.air.care.model.User;
  *
  */
 public interface UserService {
+	public User getUserByID(Long id);
+	
 	public User getUserByUserName(String userName);
 
 	public User saveUser(User user);

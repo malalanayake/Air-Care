@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByUserName(String userName) {
-		return userRepository.findByUserName(userName);
+		return userRepository.findOneByUsername(userName);
 	}
 
 	@Override
@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(User user) {
 
+	}
+
+	@Override
+	public User getUserByID(Long id) {
+		return userRepository.findOne(id);
 	}
 
 }
