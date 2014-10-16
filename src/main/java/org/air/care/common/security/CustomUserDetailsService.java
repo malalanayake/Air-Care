@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.air.care.model.User;
+import org.air.care.repository.UserRepository;
 import org.air.care.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * User details service which is going to plug in to the spring security
@@ -16,15 +19,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * @author malalanayake
  *
  */
+@Service("customUserDetailsService")
+@Transactional
 public class CustomUserDetailsService implements UserDetailsService {
+
 	@Autowired
-	UserService userService;
+	UserRepository userRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String authentication)
 			throws UsernameNotFoundException {
 		CustomUserDetails customUserData = new CustomUserDetails();
-		User user = userService.getUserByUserName(authentication);
+		User user = userRepository.findOneByUsername(authentication);
+		
 		if (user != null) {
 			customUserData.setAuthentication(true);
 			customUserData.setId(user.getId().toString());

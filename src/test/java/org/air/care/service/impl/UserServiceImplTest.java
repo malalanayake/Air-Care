@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/servlet-context-test.xml",
 		"classpath:/root-context-test.xml" })
+@Transactional
 public class UserServiceImplTest {
 
 	@Autowired
@@ -53,7 +54,14 @@ public class UserServiceImplTest {
 		user = userService.saveUser(user);
 
 		assertNotNull(userService.getUserByID(user.getId()));
-		//assertNotNull(userService.getUserByUserName("dinuka"));
+		User userfromDB = userService.getUserByUserName("dinuka");
+		assertNotNull(userfromDB);
+		assertEquals(user.getFirstName(), userfromDB.getFirstName());
+		assertEquals(user.getLastName(), userfromDB.getLastName());
+		assertEquals(user.getUsername(), userfromDB.getUsername());
+		assertEquals(user.getPassword(), userfromDB.getPassword());
+		assertEquals(user.getSequrityQuestion(), userfromDB.getSequrityQuestion());
+		assertEquals(user.getAnswer(), userfromDB.getAnswer());
 		System.out.println("User ID" + user.getId());
 	}
 
