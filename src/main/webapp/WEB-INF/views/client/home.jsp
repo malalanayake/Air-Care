@@ -1,14 +1,19 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <html>
 <head>
-	<title>Client Home</title>
+<title>Client Home</title>
 </head>
 <body>
-<h1>
-	Client Home 
-</h1>
+	<c:import url="/WEB-INF/views/layout/_header.jsp"></c:import>
 
-<P>  This is a test page for client </P>
+	<div class="content-section">
+		<div class="container">
+			<h1>Client Home</h1>
+
+			<P>This is a test page for client</P>
+		</div>
+	</div>
+	<c:import url="/WEB-INF/views/layout/_footer.jsp"></c:import>
 </body>
 </html>
