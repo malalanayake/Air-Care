@@ -1,7 +1,5 @@
 package org.air.care.service;
 
-import java.util.List;
-
 import org.air.care.model.User;
 
 /**

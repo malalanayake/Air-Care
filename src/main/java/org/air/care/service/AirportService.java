@@ -2,7 +2,6 @@ package org.air.care.service;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
-import org.springframework.stereotype.Service;
 
 /**
  * Airport service which is provide the airport operations

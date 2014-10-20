@@ -1,15 +1,11 @@
 package org.air.care.service.impl;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
 import org.air.care.model.Path;
-import org.air.care.repository.AirportRepository;
-import org.air.care.repository.PathRepository;
 import org.air.care.service.AirportService;
 import org.air.care.service.PathService;
 import org.apache.commons.logging.Log;

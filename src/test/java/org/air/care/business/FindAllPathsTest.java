@@ -1,8 +1,5 @@
 package org.air.care.business;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.air.care.model.Airport;
