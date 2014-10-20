@@ -5,6 +5,7 @@ package org.air.care.service;
 
 import java.util.List;
 
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Flight;
 
 /**
@@ -24,5 +25,7 @@ public interface FlightService {
 	public void deleteFlight(Flight flight);
 
 	public void updateFlight(Flight flight);
+	
+	public String[] getAllAirLines();
 
 }

@@ -5,6 +5,8 @@ package org.air.care.service.impl;
 
 import java.util.List;
 
+import org.air.care.common.Constant;
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Flight;
 import org.air.care.repository.FlightRepository;
 import org.air.care.service.FlightService;
@@ -31,7 +33,7 @@ public class FlightServiceImpl implements FlightService{
 	}
 
 	@Override
-	public Flight saveFlight(Flight flight) {
+	public Flight saveFlight(Flight flight){		
 		return flightRepository.save(flight);
 	}
 
@@ -48,6 +50,11 @@ public class FlightServiceImpl implements FlightService{
 	@Override
 	public List<Flight> getFlightByAirline(String airline) {
 		return flightRepository.getFlightByAirline(airline);
+	}
+
+	@Override
+	public String[] getAllAirLines() {
+		return Constant.AIRLINES;
 	}
 
 }

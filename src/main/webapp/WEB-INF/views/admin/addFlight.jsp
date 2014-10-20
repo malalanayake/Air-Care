@@ -26,8 +26,6 @@
 						<label class="control-label col-lg-2 col-lg-2" for="airline"><spring:message
 								text="AirLine Name" /></label>
 						<div class="col-lg-10">
-							<form:input id="airline" path="airline" type="text" />
-							
 							<form:select path="airline">
 								<form:options items="${airlines}" />
 							</form:select>
@@ -38,7 +36,8 @@
 						<label class="control-label col-lg-2 col-lg-2" for="flightNumber"><spring:message
 								text="Flight Number" /></label>
 						<div class="col-lg-10">
-							<form:input id="flightNumber" path="flightNumber" type="text" />
+							<form:input id="flightNumber" path="flightNumber" type="text"
+								placeholder="Eg. AA1234" />
 							<form:errors path="flightNumber" cssClass="text-danger" />
 						</div>
 					</div>

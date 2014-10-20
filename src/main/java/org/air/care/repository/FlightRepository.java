@@ -5,6 +5,7 @@ package org.air.care.repository;
 
 import java.util.List;
 
+import org.air.care.model.Airport;
 import org.air.care.model.Flight;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

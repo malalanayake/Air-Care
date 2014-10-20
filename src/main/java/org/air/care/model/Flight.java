@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Flight which is going to store the Flight details
@@ -19,6 +22,8 @@ public class Flight {
 	private Long id;
 
 	private String airline;
+	
+	@Pattern(regexp = "[A-Za-z]{2}[0-9]{4}", message = "{Pattern.Flight.flightNumber.validation}")
 	private String flightNumber;
 
 	public Long getId() {
