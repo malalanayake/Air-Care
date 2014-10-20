@@ -1,5 +1,7 @@
 package org.air.care.service;
 
+import java.util.List;
+
 import org.air.care.model.User;
 
 /**
@@ -10,7 +12,7 @@ import org.air.care.model.User;
  */
 public interface UserService {
 	public User getUserByID(Long id);
-	
+
 	public User getUserByUserName(String userName);
 
 	public User saveUser(User user);
@@ -18,4 +20,6 @@ public interface UserService {
 	public void deleteUser(User user);
 
 	public void updateUser(User user);
+
+	public String[] getSecurityQuestions();
 }

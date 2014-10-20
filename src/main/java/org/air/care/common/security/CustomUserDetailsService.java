@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import org.air.care.model.User;
 import org.air.care.repository.UserRepository;
-import org.air.care.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

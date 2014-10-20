@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
+	<annotation-driven validator="validator" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -37,5 +37,15 @@
 
 	<!-- Scan the jpa repositories -->
 	<jpa:repositories base-package="org.air.care.repository" />
+	
+	<beans:bean id="passwordValidator" class="org.air.care.validator.PasswordValidator" />
+	
+	<beans:bean id= "errorMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<beans:property name="basename" value="errormessages"/> 
+	</beans:bean>
+	
+	<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<beans:property name="validationMessageSource" ref="errorMessageSource" />
+	</beans:bean>
 
 </beans:beans>

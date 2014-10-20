@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
-import org.air.care.common.security.RoleName;
+import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.User;
 import org.air.care.service.UserService;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class PopulateData {
 		user.setSequrityQuestion("What is your pet name?");
 		user.setAnswer("jimbo");
 		ArrayList<String> userRoles = new ArrayList<String>();
-		userRoles.add(RoleName.ROLE_ADMIN);
+		userRoles.add(SecurityConstant.ROLE_ADMIN);
 		user.setRoles(userRoles);
 		user = userService.saveUser(user);
 
@@ -54,7 +54,7 @@ public class PopulateData {
 		client.setSequrityQuestion("What is your pet name?");
 		client.setAnswer("jimbo");
 		ArrayList<String> clientRoles = new ArrayList<String>();
-		clientRoles.add(RoleName.ROLE_CLIENT);
+		clientRoles.add(SecurityConstant.ROLE_CLIENT);
 		client.setRoles(clientRoles);
 		client = userService.saveUser(client);
 

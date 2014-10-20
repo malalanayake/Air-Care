@@ -7,20 +7,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="USERNAME")
+	@Column(name = "USERNAME")
+	@NotEmpty(message="{NotEmpty}")
 	private String username;
 	private String password;
+
+	@Transient
+	private String passwordConfirm;
 	private ArrayList<String> roles;
+
+	
+	@Pattern(regexp = "[A-Za-z]+", message="{Pattern.User.firstName.validation}")
 	private String firstName;
+
+	@Pattern(regexp = "[A-Za-z]+", message="{Pattern.User.lastName.validation}")
 	private String lastName;
 	private String sequrityQuestion;
+
+	@NotEmpty(message="{NotEmpty}")
 	private String answer;
 
 	public Long getId() {
@@ -85,6 +99,14 @@ public class User {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 }
