@@ -26,11 +26,12 @@ import org.springframework.transaction.annotation.Transactional;
 		"classpath:/root-context-test.xml" })
 @Transactional
 public class PassengerServiceImplTest {
-	
+
 	@Autowired
 	PassengerService passengerService;
-	
-	private static final Log logger = LogFactory.getLog(PassengerServiceImplTest.class);
+
+	private static final Log logger = LogFactory
+			.getLog(PassengerServiceImplTest.class);
 
 	@Test
 	public void save() {
@@ -40,37 +41,37 @@ public class PassengerServiceImplTest {
 		passenger.setLastName("Nagendirapillai");
 		passenger.setPassportNumber("N185949");
 		passenger.setEmailAddress("namila23@gmail.com");
-		
+
 		passenger = passengerService.savePassenger(passenger);
-		
+
 		assertNotNull(passenger.getId());
 		logger.info("Passenger Information is Saved");
 	}
 
 	@Test
 	public void getByFirstName() {
-		
+
 		Passenger passenger = new Passenger();
 		passenger.setFirstName("Amila");
 		passenger.setLastName("Nagendirapillai");
 		passenger.setPassportNumber("N185949");
 		passenger.setEmailAddress("namila23@gmail.com");
-		
+
 		passenger = passengerService.savePassenger(passenger);
-		
+
 		assertNotNull(passengerService.getPassengerByID(passenger.getId()));
-		Passenger passengerfromDB = passengerService.getPassengerByFirstname("Amila");
-		
-		
+		Passenger passengerfromDB = passengerService
+				.getPassengerByFirstname("Amila");
+
 		assertNotNull(passengerfromDB);
 		assertEquals(passenger.getFirstName(), passengerfromDB.getFirstName());
 		assertEquals(passenger.getLastName(), passengerfromDB.getLastName());
-		assertEquals(passenger.getPassportNumber(), passengerfromDB.getPassportNumber());
-		assertEquals(passenger.getEmailAddress(), passengerfromDB.getEmailAddress());
+		assertEquals(passenger.getPassportNumber(),
+				passengerfromDB.getPassportNumber());
+		assertEquals(passenger.getEmailAddress(),
+				passengerfromDB.getEmailAddress());
 		logger.info("Passenger is retrieved by First Name");
-		
-		
-		
+
 	}
 
 }

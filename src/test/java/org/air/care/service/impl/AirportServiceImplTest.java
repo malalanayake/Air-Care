@@ -9,6 +9,8 @@ import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
 import org.air.care.model.Path;
 import org.air.care.service.AirportService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +30,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AirportServiceImplTest {
 
+	private static final Log logger = LogFactory
+			.getLog(AirportServiceImplTest.class);
+
 	@Autowired
 	AirportService airportService;
 
 	@Test
 	public void saveAirport() {
+		logger.info("====TEST SAVE AIRPORT====");
 		Airport airport = new Airport();
 		airport.setName("Desmoin Iowa");
 		Path path = new Path();

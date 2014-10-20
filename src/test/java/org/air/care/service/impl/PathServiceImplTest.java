@@ -12,6 +12,8 @@ import org.air.care.repository.AirportRepository;
 import org.air.care.repository.PathRepository;
 import org.air.care.service.AirportService;
 import org.air.care.service.PathService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PathServiceImplTest {
 
+	private static final Log logger = LogFactory
+			.getLog(PathServiceImplTest.class);
+
 	@Autowired
 	PathService pathService;
 	@Autowired
@@ -38,6 +43,7 @@ public class PathServiceImplTest {
 
 	@Test
 	public void savePath() {
+		logger.info("====TEST SAVE PATH====");
 		Airport airportStart = new Airport();
 		airportStart.setName("Desmoin Iowa");
 		airportStart.setLocation("Iowa");

@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.air.care.model.User;
 import org.air.care.service.UserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImplTest {
 
+	private static final Log logger = LogFactory
+			.getLog(UserServiceImplTest.class);
+
 	@Autowired
 	UserService userService;
 
 	@Test
 	public void save() {
+		logger.info("====TEST SAVE USER====");
 		User user = new User();
 		user.setFirstName("Dinuka");
 		user.setLastName("Malalanayake");
@@ -44,6 +50,7 @@ public class UserServiceImplTest {
 
 	@Test
 	public void getByUserName() {
+		logger.info("====TEST GET BY USER NAME====");
 		User user = new User();
 		user.setFirstName("Dinuka");
 		user.setLastName("Malalanayake");
@@ -60,7 +67,8 @@ public class UserServiceImplTest {
 		assertEquals(user.getLastName(), userfromDB.getLastName());
 		assertEquals(user.getUsername(), userfromDB.getUsername());
 		assertEquals(user.getPassword(), userfromDB.getPassword());
-		assertEquals(user.getSequrityQuestion(), userfromDB.getSequrityQuestion());
+		assertEquals(user.getSequrityQuestion(),
+				userfromDB.getSequrityQuestion());
 		assertEquals(user.getAnswer(), userfromDB.getAnswer());
 		System.out.println("User ID" + user.getId());
 	}
