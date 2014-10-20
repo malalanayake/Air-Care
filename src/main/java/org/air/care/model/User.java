@@ -1,12 +1,16 @@
 package org.air.care.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 
@@ -27,10 +31,13 @@ public class User {
 	@NotEmpty(message = "{NotEmpty}")
 	private String username;
 	private String password;
-
+	
 	@Transient
 	private String passwordConfirm;
 	private ArrayList<String> roles;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	private List<Passenger> passengers;
 
 	@Pattern(regexp = "[A-Za-z]+", message = "{Pattern.User.firstName.validation}")
 	private String firstName;
@@ -113,5 +120,15 @@ public class User {
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 	}
+
+	public List<Passenger> getPassengers() {
+		return passengers;
+	}
+
+	public void setPassengers(List<Passenger> passengers) {
+		this.passengers = passengers;
+	}
+	
+	
 
 }
