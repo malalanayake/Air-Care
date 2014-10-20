@@ -14,7 +14,7 @@
 	<div class="content-section">
 		<div class="container">
 			<h2 class="section-heading">
-				Sign Up<br>
+				<spring:message code="signup.title.label" /><br>
 			</h2>
 
 			<form:form commandName="newUser" class="form-horizontal">
@@ -23,7 +23,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="firstName"><spring:message
-								text="First Name" /></label>
+								code="signup.form.firstName.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="firstName" path="firstName" type="text" />
 							<form:errors path="firstName" cssClass="text-danger" />
@@ -32,7 +32,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="lastName"><spring:message
-								text="Last Name" /></label>
+								code="signup.form.lastName.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="lastName" path="lastName" type="text" />
 							<form:errors path="lastName" cssClass="text-danger" />
@@ -41,7 +41,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="username"><spring:message
-								text="User Name" /></label>
+								code="signup.form.username.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="username" path="username" type="text" />
 							<form:errors path="username" cssClass="text-danger" />
@@ -50,7 +50,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="password"><spring:message
-								text="Password" /></label>
+								code="signup.form.password.label" /></label>
 						<div class="col-lg-10">
 							<form:password id="password" path="password" showPassword="true" />
 							<form:errors path="password" cssClass="text-danger" />
@@ -61,7 +61,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2"
 							for="passwordConfirm"><spring:message
-								text="Confirm your Password" /></label>
+								code="signup.form.passwordConfirm.label" /></label>
 						<div class="col-lg-10">
 							<form:password id="passwordConfirm" path="passwordConfirm"
 								showPassword="true" />
@@ -73,7 +73,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2"
 							for="sequrityQuestion"><spring:message
-								text="Please select Sequrity Question" /></label>
+								code="signup.form.sequrityQuestion.label" /></label>
 						<div class="col-lg-10">
 							<form:select path="sequrityQuestion">
 								<form:options items="${securityQuestions}" />
@@ -83,7 +83,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="answer"><spring:message
-								text="Your Answer" /></label>
+								code="signup.form.answer.label" /></label>
 						<div class="col-lg-10">
 							<form:password id="answer" path="answer" showPassword="true" />
 							<form:errors path="answer" cssClass="text-danger" />
@@ -94,7 +94,7 @@
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
 							<input type="submit" id="btnSumbit" class="btn btn-primary"
-								value="Sumbit" />
+								value="<spring:message code="signup.signup.button" />" />
 						</div>
 					</div>
 

@@ -15,7 +15,7 @@
 	<div class="content-section">
 		<div class="container">
 			<h2 class="section-heading">
-				Add Passenger<br>
+				<spring:message code="addPassenger.title.label" /><br>
 			</h2>
 
 			<form:form commandName="newPassenger" class="form-horizontal">
@@ -63,7 +63,7 @@
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
 							<input type="submit" id="btnSumbit" class="btn btn-primary"
-								value="Sumbit" />
+								value="<spring:message code="addPassenger.register.button" />" />
 						</div>
 					</div>
 
