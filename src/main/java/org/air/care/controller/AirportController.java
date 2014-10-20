@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * Controller for airport operations
+ * 
+ * @author malalanayake
+ *
+ */
 @Controller
 @RequestMapping("/airport")
 public class AirportController {
@@ -22,11 +28,25 @@ public class AirportController {
 	@Autowired
 	AirportService airportService;
 
+	/**
+	 * View the airport registration view
+	 * 
+	 * @param airport
+	 * @return
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addAirport(@ModelAttribute("newAirport") Airport airport) {
 		return "/admin/addAirport";
 	}
 
+	/**
+	 * Register the airport
+	 * 
+	 * @param airport
+	 * @param bindingResult
+	 * @param local
+	 * @return
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String saveAirport(
 			@Valid @ModelAttribute("newAirport") Airport airport,
