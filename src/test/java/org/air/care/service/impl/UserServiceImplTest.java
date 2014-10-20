@@ -3,6 +3,9 @@ package org.air.care.service.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Locale;
+
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.User;
 import org.air.care.service.UserService;
 import org.apache.commons.logging.Log;
@@ -33,7 +36,7 @@ public class UserServiceImplTest {
 	UserService userService;
 
 	@Test
-	public void save() {
+	public void save() throws ExceptionResourceAlredyExist {
 		logger.info("====TEST SAVE USER====");
 		User user = new User();
 		user.setFirstName("Dinuka");
@@ -42,14 +45,14 @@ public class UserServiceImplTest {
 		user.setPassword("dinuka");
 		user.setSequrityQuestion("What is your pet name?");
 		user.setAnswer("jimbo");
-		user = userService.saveUser(user);
+		user = userService.saveUser(user, Locale.getDefault());
 
 		assertNotNull(user.getId());
 		System.out.println("User ID" + user.getId());
 	}
 
 	@Test
-	public void getByUserName() {
+	public void getByUserName() throws ExceptionResourceAlredyExist {
 		logger.info("====TEST GET BY USER NAME====");
 		User user = new User();
 		user.setFirstName("Dinuka");
@@ -58,7 +61,7 @@ public class UserServiceImplTest {
 		user.setPassword("dinuka");
 		user.setSequrityQuestion("What is your pet name?");
 		user.setAnswer("jimbo");
-		user = userService.saveUser(user);
+		user = userService.saveUser(user, Locale.getDefault());
 
 		assertNotNull(userService.getUserByID(user.getId()));
 		User userfromDB = userService.getUserByUserName("dinuka");

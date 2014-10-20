@@ -3,7 +3,9 @@ package org.air.care.config;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.User;
 import org.air.care.service.UserService;
@@ -31,7 +33,7 @@ public class PopulateData {
 
 	@Test
 	@Rollback(false)
-	public void populateUsers() {
+	public void populateUsers() throws ExceptionResourceAlredyExist {
 		// Populate the Admin
 		User user = new User();
 		user.setFirstName("Admin");
@@ -43,7 +45,7 @@ public class PopulateData {
 		ArrayList<String> userRoles = new ArrayList<String>();
 		userRoles.add(SecurityConstant.ROLE_ADMIN);
 		user.setRoles(userRoles);
-		user = userService.saveUser(user);
+		user = userService.saveUser(user, Locale.getDefault());
 
 		// Populate the client
 		User client = new User();
@@ -56,7 +58,7 @@ public class PopulateData {
 		ArrayList<String> clientRoles = new ArrayList<String>();
 		clientRoles.add(SecurityConstant.ROLE_CLIENT);
 		client.setRoles(clientRoles);
-		client = userService.saveUser(client);
+		client = userService.saveUser(client, Locale.getDefault());
 
 		assertNotNull(client.getId());
 		System.out.println("Client ID" + client.getId());

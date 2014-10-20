@@ -23,8 +23,9 @@
 					<form:errors path="*" cssClass="alert alert-danger" element="div" />
 
 					<div class="form-group">
-						<label class="control-label col-lg-2 col-lg-2" for="firstName"><spring:message
-								text="First Name" /></label>
+						<label class="control-label col-lg-2 col-lg-2" for="firstName">
+							<spring:message code="addPassenger.form.firstName.label" />
+						</label>
 						<div class="col-lg-10">
 							<form:input id="firstName" path="firstName" type="text" />
 							<form:errors path="firstName" cssClass="text-danger" />
@@ -33,7 +34,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="lastName"><spring:message
-								text="Last Name" /></label>
+								code="addPassenger.form.lastName.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="lastName" path="lastName" type="text" />
 							<form:errors path="lastName" cssClass="text-danger" />
@@ -43,7 +44,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2"
 							for="passportNumber"><spring:message
-								text="Passpost Number" /></label>
+								code="addPassenger.form.passportNumber.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="passportNumber" path="passportNumber" type="text" />
 							<form:errors path="passportNumber" cssClass="text-danger" />
@@ -52,7 +53,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="emailAddress"><spring:message
-								text="Email Address" /></label>
+								code="addPassenger.form.emailAddress.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="emailAddress" path="emailAddress" type="text" />
 							<form:errors path="emailAddress" cssClass="text-danger" />

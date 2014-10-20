@@ -1,5 +1,8 @@
 package org.air.care.service;
 
+import java.util.Locale;
+
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.User;
 
 /**
@@ -13,7 +16,7 @@ public interface UserService {
 
 	public User getUserByUserName(String userName);
 
-	public User saveUser(User user);
+	public User saveUser(User user, Locale locale) throws ExceptionResourceAlredyExist;
 
 	public void deleteUser(User user);
 

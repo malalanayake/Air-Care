@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix='sec'
+	uri='http://www.springframework.org/security/tags'%>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,16 +45,36 @@
 				<li><a href="#">Services</a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
 						Contact </a></li>
-				<li><a href="<c:url value="/client/signup" />"><i
-						class="glyphicon glyphicon-user"></i> Sign Up </a></li>
-				<li><a href="<c:url value="/passenger/add" />"><i
-						class="glyphicon glyphicon-plus"></i> Passenger </a></li>
-				<li><a href="<c:url value="/login" />" data-toggle="tooltip"
-					data-placement="bottom" title="Log-In"><i
-						class="glyphicon glyphicon-log-in"></i></a></li>
-				<li><a href="<c:url value="/login" />" data-toggle="tooltip"
-					data-placement="bottom" title="Log-Out"><i
-						class="glyphicon glyphicon-log-out"></i></a></li>
+
+				<sec:authorize ifNotGranted="ROLE_ANONYMOUS">
+					<li><a href="<c:url value="/passenger/add" />"><i
+							class="glyphicon glyphicon-plus"></i> Passenger </a></li>
+					<li>
+						<a href="<c:url value="/j_spring_security_logout" var="logoutUrl" />"
+						data-toggle="tooltip" data-placement="bottom" title="Log-Out">
+							<i class="glyphicon glyphicon-log-out"></i>
+						</a> 
+							
+						<!-- csrt for log out-->
+						<form action="${logoutUrl}" method="post" id="logoutForm">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form> <script>
+							function formSubmit() {
+								document.getElementById("logoutForm").submit();
+							}
+						</script>
+					</li>
+				</sec:authorize>
+
+				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
+					<li><a href="<c:url value="/client/signup" />"><i
+							class="glyphicon glyphicon-user"></i> Sign Up </a></li>
+					<li><a href="<c:url value="/login" />" data-toggle="tooltip"
+						data-placement="bottom" title="Log-In"><i
+							class="glyphicon glyphicon-log-in"></i></a></li>
+				</sec:authorize>
+
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

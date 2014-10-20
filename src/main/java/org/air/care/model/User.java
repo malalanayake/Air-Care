@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 
-import org.air.care.validator.UserName;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -30,7 +29,7 @@ public class User {
 	private Long id;
 	@Column(name = "USERNAME")
 	@NotEmpty(message = "{NotEmpty}")
-	@UserName
+
 	private String username;
 	private String password;
 	

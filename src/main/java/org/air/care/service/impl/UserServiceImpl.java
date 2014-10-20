@@ -1,7 +1,10 @@
 package org.air.care.service.impl;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.User;
 import org.air.care.repository.UserRepository;
@@ -29,10 +32,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User saveUser(User user) {
+	public User saveUser(User user, Locale locale)
+			throws ExceptionResourceAlredyExist {
 		ArrayList<String> roles = new ArrayList<String>();
 		roles.add(SecurityConstant.ROLE_CLIENT);
 		user.setRoles(roles);
+		if (userRepository.findOneByUsername(user.getUsername()) != null)
+			throw new ExceptionResourceAlredyExist(ResourceBundle.getBundle(
+					"errormessages", locale).getString(
+					"exception.username.save.alreadyExist"));
 		return userRepository.save(user);
 	}
 

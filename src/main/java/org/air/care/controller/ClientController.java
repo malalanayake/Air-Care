@@ -1,8 +1,11 @@
 package org.air.care.controller;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.User;
 import org.air.care.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -61,7 +65,7 @@ public class ClientController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView saveUser(
 			@ModelAttribute("newUser") @Valid User userToBeAdded,
-			BindingResult result, HttpServletRequest request) {
+			BindingResult result, HttpServletRequest request, Locale locale) {
 		ModelAndView modelAndView = new ModelAndView();
 
 		if (result.hasErrors()) {
@@ -72,7 +76,16 @@ public class ClientController {
 			return modelAndView;
 		}
 		
-		userService.saveUser(userToBeAdded);
+		try {
+			userService.saveUser(userToBeAdded, locale);
+		} catch(ExceptionResourceAlredyExist ex) {
+			FieldError error = new FieldError("newUser", "username", ex.getMessage());
+			result.addError(error);
+			modelAndView.addObject("securityQuestions",
+					userService.getSecurityQuestions());
+			modelAndView.setViewName("/client/signup");
+			return modelAndView;
+		}
 
 		modelAndView.setViewName("/client/home");
 		return modelAndView;
