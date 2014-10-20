@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
@@ -55,7 +56,7 @@ public class AirportServiceImplTest {
 
 		Airport airportAfter = null;
 		try {
-			airportAfter = airportService.save(airport);
+			airportAfter = airportService.save(airport, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			e.printStackTrace();
 		}
@@ -66,7 +67,8 @@ public class AirportServiceImplTest {
 
 		String expName = "";
 		try {
-			Airport airportExcep = airportService.save(airport);
+			Airport airportExcep = airportService.save(airport,
+					Locale.getDefault());
 		} catch (Exception ex) {
 			expName = ex.getClass().toString();
 		}

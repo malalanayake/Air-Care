@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.air.care.common.Constant;
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.User;
@@ -23,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
+	private final String exceptionUserAlreadyEsist = "exception.username.save.alreadyExist";
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -39,8 +42,8 @@ public class UserServiceImpl implements UserService {
 		user.setRoles(roles);
 		if (userRepository.findOneByUsername(user.getUsername()) != null)
 			throw new ExceptionResourceAlredyExist(ResourceBundle.getBundle(
-					"errormessages", locale).getString(
-					"exception.username.save.alreadyExist"));
+					Constant.errorMessageBaseName, locale).getString(
+					this.exceptionUserAlreadyEsist));
 		return userRepository.save(user);
 	}
 

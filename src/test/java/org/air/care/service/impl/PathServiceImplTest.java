@@ -3,6 +3,8 @@ package org.air.care.service.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Locale;
+
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
 import org.air.care.model.Path;
@@ -50,8 +52,9 @@ public class PathServiceImplTest {
 
 		Path path = null;
 		try {
-			airportStart = airportService.save(airportStart);
-			airportEnd = airportService.save(airportEnd);
+			airportStart = airportService.save(airportStart,
+					Locale.getDefault());
+			airportEnd = airportService.save(airportEnd, Locale.getDefault());
 			path = pathService.save(airportStart, airportEnd);
 		} catch (ExceptionResourceAlredyExist e) {
 			e.printStackTrace();

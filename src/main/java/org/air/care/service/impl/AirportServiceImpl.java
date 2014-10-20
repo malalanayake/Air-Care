@@ -1,12 +1,18 @@
 package org.air.care.service.impl;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import org.air.care.common.Constant;
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
 import org.air.care.repository.AirportRepository;
 import org.air.care.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 /**
  * Airport service implementation class
@@ -17,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class AirportServiceImpl implements AirportService {
+
+	private final String exceptionAirportAlreadyExist = "exception.aireport.save.alreadyexist";
 
 	@Autowired
 	private AirportRepository aiportRepository;
@@ -32,13 +40,16 @@ public class AirportServiceImpl implements AirportService {
 	}
 
 	@Override
-	public Airport save(Airport airport) throws ExceptionResourceAlredyExist {
+	public Airport save(Airport airport, Locale locale)
+			throws ExceptionResourceAlredyExist {
 		Airport airportSaved = null;
 		if (aiportRepository.findAirportByName(airport.getName()) == null) {
 			airportSaved = aiportRepository.save(airport);
 		} else {
-			throw new ExceptionResourceAlredyExist("Airport Name "
-					+ airport.getName() + " is alredy exist");
+			ResourceBundle resourceBundle = ResourceBundle.getBundle(
+					Constant.errorMessageBaseName, locale);
+			throw new ExceptionResourceAlredyExist(
+					resourceBundle.getString(exceptionAirportAlreadyExist));
 		}
 
 		return airportSaved;

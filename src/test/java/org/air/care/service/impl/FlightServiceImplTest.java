@@ -40,7 +40,7 @@ public class FlightServiceImplTest {
 
 		Flight flight = new Flight();
 		flight.setAirline("SL001");
-		flight.setFlightNumber("F001");
+		flight.setFlightNumber("FS0013");
 
 		flight = flightService.saveFlight(flight);
 
@@ -53,21 +53,21 @@ public class FlightServiceImplTest {
 
 		Flight flightOne = new Flight();
 		flightOne.setAirline("SL001");
-		flightOne.setFlightNumber("F001");
+		flightOne.setFlightNumber("FN0012");
 
 		flightOne = flightService.saveFlight(flightOne);
 
 		Flight flightTwo = new Flight();
 
 		flightTwo.setAirline("SL001");
-		flightTwo.setFlightNumber("F002");
+		flightTwo.setFlightNumber("FX0023");
 
 		flightTwo = flightService.saveFlight(flightTwo);
 
 		Flight flightThree = new Flight();
 
 		flightThree.setAirline("SL002");
-		flightThree.setFlightNumber("F003");
+		flightThree.setFlightNumber("FU0034");
 
 		flightThree = flightService.saveFlight(flightThree);
 

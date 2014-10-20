@@ -1,7 +1,10 @@
 package org.air.care.service;
 
+import java.util.Locale;
+
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
+import org.springframework.cglib.core.Local;
 
 /**
  * Airport service which is provide the airport operations
@@ -15,7 +18,8 @@ public interface AirportService {
 
 	public Airport getByName(String name);
 
-	public Airport save(Airport airport) throws ExceptionResourceAlredyExist;
+	public Airport save(Airport airport, Locale locale)
+			throws ExceptionResourceAlredyExist;
 
 	public void delete(Airport airport);
 
