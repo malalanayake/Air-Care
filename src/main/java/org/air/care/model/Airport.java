@@ -20,6 +20,9 @@ public class Airport implements Serializable {
 	private Long id;
 	private String name;
 	private String location;
+	private Double latitude;
+	private Double longitude;
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "airportIn")
 	private List<Path> listOfOutPaths;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "airportOut")
@@ -76,6 +79,22 @@ public class Airport implements Serializable {
 
 	public void setListOfInPaths(List<Path> listOfInPaths) {
 		this.listOfInPaths = listOfInPaths;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 }
