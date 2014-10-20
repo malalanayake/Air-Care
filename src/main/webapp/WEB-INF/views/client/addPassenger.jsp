@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Passenger</title>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/layout/_header.jsp"></c:import>
@@ -43,7 +43,7 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2"
 							for="passportNumber"><spring:message
-								text="Your Passpost Number" /></label>
+								text="Passpost Number" /></label>
 						<div class="col-lg-10">
 							<form:input id="passportNumber" path="passportNumber" type="text" />
 							<form:errors path="passportNumber" cssClass="text-danger" />
@@ -52,7 +52,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="emailAddress"><spring:message
-								text="Your Email Address" /></label>
+								text="Email Address" /></label>
 						<div class="col-lg-10">
 							<form:input id="emailAddress" path="emailAddress" type="text" />
 							<form:errors path="emailAddress" cssClass="text-danger" />
