@@ -12,13 +12,19 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * Entity which is going to store the User details
+ * 
+ * @author malalanayake
+ *
+ */
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "USERNAME")
-	@NotEmpty(message="{NotEmpty}")
+	@NotEmpty(message = "{NotEmpty}")
 	private String username;
 	private String password;
 
@@ -26,15 +32,14 @@ public class User {
 	private String passwordConfirm;
 	private ArrayList<String> roles;
 
-	
-	@Pattern(regexp = "[A-Za-z]+", message="{Pattern.User.firstName.validation}")
+	@Pattern(regexp = "[A-Za-z]+", message = "{Pattern.User.firstName.validation}")
 	private String firstName;
 
-	@Pattern(regexp = "[A-Za-z]+", message="{Pattern.User.lastName.validation}")
+	@Pattern(regexp = "[A-Za-z]+", message = "{Pattern.User.lastName.validation}")
 	private String lastName;
 	private String sequrityQuestion;
 
-	@NotEmpty(message="{NotEmpty}")
+	@NotEmpty(message = "{NotEmpty}")
 	private String answer;
 
 	public Long getId() {

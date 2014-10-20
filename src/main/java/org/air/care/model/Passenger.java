@@ -9,19 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
+ * Entity which is going to store the passenger details
+ * 
  * @author Amila
  *
  */
 @Entity
 public class Passenger {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String firstName;
 	private String lastName;
-	
+
 	private String passportNumber;
 	private String emailAddress;
 
@@ -56,7 +58,7 @@ public class Passenger {
 	public void setPassportNumber(String passportNumber) {
 		this.passportNumber = passportNumber;
 	}
-	
+
 	public String getEmailAddress() {
 		return emailAddress;
 	}

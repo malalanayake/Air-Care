@@ -12,6 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Entity which is going to store the Aireport details
+ * 
+ * @author malalanayake
+ *
+ */
 @Entity
 public class Airport implements Serializable {
 	@Id

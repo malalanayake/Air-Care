@@ -9,6 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * Entity which is going to store the Path details
+ * 
+ * @author malalanayake
+ *
+ */
 @Entity
 public class Path implements Serializable {
 	@Id
