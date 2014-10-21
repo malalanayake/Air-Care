@@ -35,8 +35,33 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
+
+			<script type="text/javascript">
+				function makeAjaxCall(language) {
+					var base = $('#lan').val();
+					$.ajax({
+						type : "post",
+						url : base + language,
+						cache : false,
+						success : function(response) {
+							location.reload();
+						},
+						error : function(e) {
+							// console.log(e);
+							alert('Error while request..');
+						}
+					});
+
+				}
+			</script>
+
+			<c:url value="/language/" var="lanURL" />
+			<input id="lan" type="hidden" value="${lanURL}" />
 			<c:url value="/client/home" var="clienHomeURL" />
-			<a class="navbar-brand" href="${clienHomeURL}">Air Care</a>
+			<a class="navbar-brand" href="${clienHomeURL}">Air Care</a> <a
+				onclick="makeAjaxCall('en');" class="navbar-brand">English</a>
+			<c:url value="/language/ch" var="lanChineseURL" />
+			<a onclick="makeAjaxCall('ch');" class="navbar-brand">Chinese</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"

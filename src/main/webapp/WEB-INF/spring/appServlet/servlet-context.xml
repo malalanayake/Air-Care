@@ -37,15 +37,23 @@
 
 	<!-- Scan the jpa repositories -->
 	<jpa:repositories base-package="org.air.care.repository" />
-	
+
 	<beans:bean id="passwordValidator" class="org.air.care.validator.PasswordValidator" />
-	
-	<beans:bean id= "errorMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-   		<beans:property name="basename" value="errormessages"/> 
+
+	<beans:bean id="errorMessageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basename" value="errormessages" />
 	</beans:bean>
-	
-	<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+
+	<beans:bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<beans:property name="validationMessageSource" ref="errorMessageSource" />
+	</beans:bean>
+
+	<!-- Using for the store the language specification -->
+	<beans:bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<beans:property name="defaultLocale" value="en" />
 	</beans:bean>
 
 </beans:beans>

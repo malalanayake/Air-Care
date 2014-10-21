@@ -16,4 +16,8 @@ public interface Constant {
 
 	public final String errorMessageBaseName = "errormessages";
 
+	public final String LANGUAGE_ENGLISH = "en";
+
+	public final String LANGUAGE_CHINESE = "ch";
+
 }
