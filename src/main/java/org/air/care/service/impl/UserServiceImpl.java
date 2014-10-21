@@ -38,8 +38,14 @@ public class UserServiceImpl implements UserService {
 	public User saveUser(User user, Locale locale)
 			throws ExceptionResourceAlredyExist {
 		ArrayList<String> roles = new ArrayList<String>();
-		roles.add(SecurityConstant.ROLE_CLIENT);
-		user.setRoles(roles);
+		// If user role is null then set the role as Client
+		if (user.getRoles() != null) {
+			if (user.getRoles().size() == 0) {
+				roles.add(SecurityConstant.ROLE_CLIENT);
+				user.setRoles(roles);
+			}
+		}
+
 		if (userRepository.findOneByUsername(user.getUsername()) != null)
 			throw new ExceptionResourceAlredyExist(ResourceBundle.getBundle(
 					Constant.errorMessageBaseName, locale).getString(

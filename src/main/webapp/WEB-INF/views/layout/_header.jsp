@@ -35,7 +35,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Air Care</a>
+			<c:url value="/client/home" var="clienHomeURL" />
+			<a class="navbar-brand" href="${clienHomeURL}">Air Care</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -49,13 +50,11 @@
 				<sec:authorize ifNotGranted="ROLE_ANONYMOUS">
 					<li><a href="<c:url value="/passenger/add" />"><i
 							class="glyphicon glyphicon-plus"></i> Passenger </a></li>
-					<li>
-						<a href="<c:url value="/j_spring_security_logout" var="logoutUrl" />"
-						data-toggle="tooltip" data-placement="bottom" title="Log-Out">
-							<i class="glyphicon glyphicon-log-out"></i>
-						</a> 
-							
-						<!-- csrt for log out-->
+					<li><c:url value="/j_spring_security_logout" var="logoutUrl" />
+						<a href="${logoutUrl}" data-toggle="tooltip"
+						data-placement="bottom" title="Log-Out"> <i
+							class="glyphicon glyphicon-log-out"></i>
+					</a> <!-- csrt for log out-->
 						<form action="${logoutUrl}" method="post" id="logoutForm">
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
@@ -63,8 +62,7 @@
 							function formSubmit() {
 								document.getElementById("logoutForm").submit();
 							}
-						</script>
-					</li>
+						</script></li>
 				</sec:authorize>
 
 				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
