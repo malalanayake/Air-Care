@@ -71,4 +71,9 @@ public class AirportServiceImpl implements AirportService {
 		return aiportRepository.filterAirports(name);
 	}
 
+	@Override
+	public List<Airport> getAllAirports() {
+		return (List<Airport>) aiportRepository.findAll();
+	}
+
 }

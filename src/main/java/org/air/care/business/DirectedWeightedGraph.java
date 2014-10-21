@@ -15,7 +15,7 @@ import org.air.care.model.Path;
  *
  * @param <T>
  */
-class DirectedWeightedGraph<T> implements Iterable<T> {
+public class DirectedWeightedGraph<T> implements Iterable<T> {
 
 	/**
 	 * A map from nodes in the graph to sets of outgoing edges. Each set of

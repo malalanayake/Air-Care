@@ -24,6 +24,8 @@ public interface AirportService {
 	public void delete(Airport airport);
 
 	public void update(Airport airport);
-	
+
 	public List<Airport> filterAirports(String name);
+
+	public List<Airport> getAllAirports();
 }

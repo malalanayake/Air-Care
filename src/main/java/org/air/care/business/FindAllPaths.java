@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 
 /**
  * Given a connected directed graph, find all paths between any two input
@@ -50,7 +51,7 @@ public class FindAllPaths<T> {
 	public List<List<T>> getAllPaths(T source, T destination) {
 		validate(source, destination);
 
-		List<List<T>> paths = new ArrayList<List<T>>();
+		List<List<T>> paths = new Vector<List<T>>();
 		recursive(source, destination, paths, new LinkedHashSet<T>());
 		return paths;
 	}
@@ -61,7 +62,7 @@ public class FindAllPaths<T> {
 		path.add(current);
 
 		if (current == destination) {
-			paths.add(new ArrayList<T>(path));
+			paths.add(new Vector<T>(path));
 			path.remove(current);
 			return;
 		}
