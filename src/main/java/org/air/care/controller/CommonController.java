@@ -59,10 +59,28 @@ public class CommonController {
 			}
 		}
 
-		return "/client/index";
+		return "/index";
 
 	}
 
+	/**
+	 * Return index page
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index() {
+		return "/index";
+	}
+
+	/**
+	 * Change the language
+	 * 
+	 * @param type
+	 * @param request
+	 * @param response
+	 * @param locale
+	 */
 	@RequestMapping(value = "/language/{type}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public @ResponseBody void changeLanguage(@PathVariable("type") String type,
