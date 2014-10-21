@@ -47,9 +47,22 @@
 				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
 						Contact </a></li>
 
-				<sec:authorize ifNotGranted="ROLE_ANONYMOUS">
+				<!-- Client Grated -->
+				<sec:authorize ifAnyGranted="ROLE_CLIENT">
 					<li><a href="<c:url value="/passenger/add" />"><i
 							class="glyphicon glyphicon-plus"></i> Passenger </a></li>
+				</sec:authorize>
+
+				<!-- Admin Grated -->
+				<sec:authorize ifAnyGranted="ROLE_ADMIN">
+					<li><a href="<c:url value="/flight/add" />"><i
+							class="glyphicon glyphicon-plane"></i> Flight </a></li>
+					<li><a href="<c:url value="/airport/add" />"><i
+							class="glyphicon glyphicon-map-marker"></i> Airport </a></li>
+				</sec:authorize>
+
+				<!-- Any User logged in -->
+				<sec:authorize ifNotGranted="ROLE_ANONYMOUS">
 					<li><c:url value="/j_spring_security_logout" var="logoutUrl" />
 						<a href="${logoutUrl}" data-toggle="tooltip"
 						data-placement="bottom" title="Log-Out"> <i
@@ -65,6 +78,7 @@
 						</script></li>
 				</sec:authorize>
 
+				<!-- User is not logged in -->
 				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
 					<li><a href="<c:url value="/client/signup" />"><i
 							class="glyphicon glyphicon-user"></i> Sign Up </a></li>
