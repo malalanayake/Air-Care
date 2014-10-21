@@ -24,7 +24,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="airline"><spring:message
-								text="AirLine Name" /></label>
+								code="register.form.airline.label" /></label>
 						<div class="col-lg-10">
 							<form:select path="airline">
 								<form:options items="${airlines}" />
@@ -34,7 +34,7 @@
 
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="flightNumber"><spring:message
-								text="Flight Number" /></label>
+								code="register.form.flightNumber.label" /></label>
 						<div class="col-lg-10">
 							<form:input id="flightNumber" path="flightNumber" type="text"
 								placeholder="Eg. AA1234" />
