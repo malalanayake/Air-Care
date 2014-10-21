@@ -52,7 +52,7 @@ public class ClientController {
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String clientHome() {
-		return "/client/home";
+		return "/client/clientHome";
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class ClientController {
 			return modelAndView;
 		}
 
-		modelAndView.setViewName("/client/home");
+		modelAndView.setViewName("/client/clientHome");
 		return modelAndView;
 	}
 

@@ -21,8 +21,11 @@
 	</div>
 </footer>
 
-<!-- jQuery Version 1.11.0 -->
-<script src="<c:url value="/resources/js/jquery-1.11.0.js" />"></script>
-
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script
+	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="<c:url value="/resources/js/bootstrap.min.js"  />"></script>

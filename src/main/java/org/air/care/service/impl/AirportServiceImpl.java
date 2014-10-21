@@ -1,5 +1,6 @@
 package org.air.care.service.impl;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -63,6 +64,11 @@ public class AirportServiceImpl implements AirportService {
 	@Override
 	public void update(Airport airport) {
 		aiportRepository.save(airport);
+	}
+
+	@Override
+	public List<Airport> filterAirports(String name) {
+		return aiportRepository.filterAirports(name);
 	}
 
 }

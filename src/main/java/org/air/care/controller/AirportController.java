@@ -14,6 +14,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for airport operations
@@ -64,5 +66,17 @@ public class AirportController {
 			return "/admin/addAirport";
 		}
 		return "/admin/addAirport";
+	}
+
+	@RequestMapping(value = "/getFilteredAirports", method = RequestMethod.POST)
+	public @ResponseBody String getFilteredAirports(
+			@RequestParam("filter") String filter) {
+		StringBuilder sb = new StringBuilder();
+		for (Airport airport : airportService.filterAirports(filter + "%")) {
+			sb.append(airport.getName() + ":");
+		}
+
+		return sb.length() > 0 ? sb.toString().substring(0, sb.length() - 1)
+				: sb.toString();
 	}
 }

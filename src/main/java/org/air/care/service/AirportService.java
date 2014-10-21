@@ -1,10 +1,10 @@
 package org.air.care.service;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
-import org.springframework.cglib.core.Local;
 
 /**
  * Airport service which is provide the airport operations
@@ -24,4 +24,6 @@ public interface AirportService {
 	public void delete(Airport airport);
 
 	public void update(Airport airport);
+	
+	public List<Airport> filterAirports(String name);
 }
