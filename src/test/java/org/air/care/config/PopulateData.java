@@ -170,56 +170,56 @@ public class PopulateData {
 
 		// airport1 -> airport2 ==> Chicargo to Desmoin
 		try {
-			pathService.save(airport1, airport2);
+			pathService.save(airport1, airport2, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport2 -> airport3 ==> Desmoin to Ames
 		try {
-			pathService.save(airport2, airport3);
+			pathService.save(airport2, airport3, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport3 -> airport2 ==> Ames to Desmoin
 		try {
-			pathService.save(airport3, airport2);
+			pathService.save(airport3, airport2, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport1 -> airport6 ==> Chicargo to San Francisco
 		try {
-			pathService.save(airport1, airport6);
+			pathService.save(airport1, airport6, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport6 -> airport1 ==> San Francisco to Chicargo
 		try {
-			pathService.save(airport6, airport1);
+			pathService.save(airport6, airport1, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport1 -> airport7 ==> Chicargo to Miami International
 		try {
-			pathService.save(airport1, airport7);
+			pathService.save(airport1, airport7, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport7 -> airport1 ==> Miami International to Chicargo
 		try {
-			pathService.save(airport7, airport1);
+			pathService.save(airport7, airport1, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}
 
 		// airport7 -> airport6 ==> Miami International to San Francisco
 		try {
-			pathService.save(airport7, airport6);
+			pathService.save(airport7, airport6, Locale.getDefault());
 		} catch (ExceptionResourceAlredyExist e) {
 			assertFalse(true);
 		}

@@ -1,7 +1,10 @@
 package org.air.care.service.impl;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+import org.air.care.common.Constant;
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
 import org.air.care.model.Path;
@@ -21,12 +24,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PathServiceImpl implements PathService {
 
+	private final String exceptionPathAlreadyExist = "exception.path.save.alreadyExist";
+
 	@Autowired
 	PathRepository pathRepository;
 
 	@Override
-	public Path save(Airport start, Airport end)
+	public Path save(Airport start, Airport end, Locale locale)
 			throws ExceptionResourceAlredyExist {
+		Path pathSaved = null;
 		Path path = new Path();
 		if (pathRepository.findPathByAirports(start, end) == null) {
 
@@ -34,16 +40,16 @@ public class PathServiceImpl implements PathService {
 			path.setAirportOut(end);
 
 			path = pathRepository.save(path);
-			start.setOutPath(path);
-			end.setInPath(path);
-			
-		} else {
-			throw new ExceptionResourceAlredyExist("Path start from "
-					+ start.getName() + " to " + end.getName()
-					+ " is alredy exist");
-		}
+			//start.getListOfOutPaths().add(path);
+			//end.getListOfInPaths().add(path);
 
-		return path;
+		} else {
+			ResourceBundle resourceBundle = ResourceBundle.getBundle(
+					Constant.errorMessageBaseName, locale);
+			throw new ExceptionResourceAlredyExist(
+					resourceBundle.getString(exceptionPathAlreadyExist));
+		}
+		return pathSaved;
 	}
 
 	@Override

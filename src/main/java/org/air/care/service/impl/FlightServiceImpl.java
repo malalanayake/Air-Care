@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class FlightServiceImpl implements FlightService {
 	
-	private final String exceptionAirportAlreadyExist = "exception.flightNumber.save.alreadyExist";
+	private final String exceptionFlightAlreadyExist = "exception.flightNumber.save.alreadyExist";
 
 	@Autowired
 	FlightRepository flightRepository;
@@ -46,7 +46,7 @@ public class FlightServiceImpl implements FlightService {
 			ResourceBundle resourceBundle = ResourceBundle.getBundle(
 					Constant.errorMessageBaseName, locale);
 			throw new ExceptionResourceAlredyExist(
-					resourceBundle.getString(exceptionAirportAlreadyExist));			
+					resourceBundle.getString(exceptionFlightAlreadyExist));			
 		}
 		return flightSaved;
 	}

@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Entity which is going to store the Path details
@@ -20,10 +23,19 @@ public class Path implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Valid
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Airport airportOut;
+	
+	@Valid
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Airport airportIn;
+	
+	public Path() {
+		this.airportOut = new Airport();
+		this.airportIn = new Airport();
+	}
 
 	public Long getId() {
 		return id;
