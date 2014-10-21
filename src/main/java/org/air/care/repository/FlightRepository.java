@@ -30,5 +30,8 @@ public interface FlightRepository extends CrudRepository<Flight, Long> {
 
 	@Query("SELECT f FROM Flight f where airline = :airline")
 	public List<Flight> getFlightByAirline(@Param("airline") String airline);
+	
+	@Query("Select f FROM Flight f where flightNumber=:flightNumber")
+	public Flight findFlightByFlightNumber(@Param("flightNumber") String flightNumber);
 
 }

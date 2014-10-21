@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Locale;
 
+import org.air.care.common.exception.ExceptionResourceAlredyExist;
+import org.air.care.model.Airport;
 import org.air.care.model.Flight;
 import org.air.care.service.FlightService;
 import org.apache.commons.logging.Log;
@@ -41,10 +44,15 @@ public class FlightServiceImplTest {
 		Flight flight = new Flight();
 		flight.setAirline("SL001");
 		flight.setFlightNumber("FS0013");
+		
+		Flight flightAfter = null;
+		try {
+			flightAfter = flightService.saveFlight(flight, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
 
-		flight = flightService.saveFlight(flight);
-
-		assertNotNull(flight.getId());
+		assertNotNull(flightAfter.getId());
 		logger.info("Flight Information is Saved");
 	}
 
@@ -54,26 +62,41 @@ public class FlightServiceImplTest {
 		Flight flightOne = new Flight();
 		flightOne.setAirline("SL001");
 		flightOne.setFlightNumber("FN0012");
-
-		flightOne = flightService.saveFlight(flightOne);
+		
+		Flight flightOneAfter = null;
+		try {
+			flightOneAfter = flightService.saveFlight(flightOne, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
 
 		Flight flightTwo = new Flight();
 
 		flightTwo.setAirline("SL001");
 		flightTwo.setFlightNumber("FX0023");
-
-		flightTwo = flightService.saveFlight(flightTwo);
+		
+		Flight flightTwoAfter = null;
+		try {
+			flightTwoAfter = flightService.saveFlight(flightTwo, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
 
 		Flight flightThree = new Flight();
 
 		flightThree.setAirline("SL002");
 		flightThree.setFlightNumber("FU0034");
+		
+		Flight flightThreeAfter = null;
+		try {
+			flightThreeAfter = flightService.saveFlight(flightThree, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
 
-		flightThree = flightService.saveFlight(flightThree);
-
-		assertNotNull(flightService.getFlightByID(flightOne.getId()));
-		assertNotNull(flightService.getFlightByID(flightTwo.getId()));
-		assertNotNull(flightService.getFlightByID(flightThree.getId()));
+		assertNotNull(flightService.getFlightByID(flightOneAfter.getId()));
+		assertNotNull(flightService.getFlightByID(flightTwoAfter.getId()));
+		assertNotNull(flightService.getFlightByID(flightThreeAfter.getId()));
 
 		List<Flight> flightfromDB = flightService.getFlightByAirline("SL001");
 

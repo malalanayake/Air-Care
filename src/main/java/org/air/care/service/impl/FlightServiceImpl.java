@@ -4,6 +4,8 @@
 package org.air.care.service.impl;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.air.care.common.Constant;
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
@@ -22,8 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class FlightServiceImpl implements FlightService{
+public class FlightServiceImpl implements FlightService {
 	
+	private final String exceptionAirportAlreadyExist = "exception.flightNumber.save.alreadyExist";
+
 	@Autowired
 	FlightRepository flightRepository;
 
@@ -33,10 +37,20 @@ public class FlightServiceImpl implements FlightService{
 	}
 
 	@Override
-	public Flight saveFlight(Flight flight){		
-		return flightRepository.save(flight);
+	public Flight saveFlight(Flight flight, Locale locale)
+			throws ExceptionResourceAlredyExist {
+		Flight flightSaved = null;
+		if (flightRepository.findFlightByFlightNumber(flight.getFlightNumber()) == null){
+			flightSaved = flightRepository.save(flight);
+		} else {
+			ResourceBundle resourceBundle = ResourceBundle.getBundle(
+					Constant.errorMessageBaseName, locale);
+			throw new ExceptionResourceAlredyExist(
+					resourceBundle.getString(exceptionAirportAlreadyExist));			
+		}
+		return flightSaved;
 	}
-
+	
 	@Override
 	public void deleteFlight(Flight flight) {
 		flightRepository.delete(flight);
@@ -56,5 +70,4 @@ public class FlightServiceImpl implements FlightService{
 	public String[] getAllAirLines() {
 		return Constant.AIRLINES;
 	}
-
 }

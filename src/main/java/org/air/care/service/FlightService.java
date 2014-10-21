@@ -4,6 +4,7 @@
 package org.air.care.service;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Flight;
@@ -20,7 +21,7 @@ public interface FlightService {
 	
 	public List<Flight> getFlightByAirline(String airline);
 
-	public Flight saveFlight(Flight flight);
+	public Flight saveFlight(Flight flight, Locale locale) throws ExceptionResourceAlredyExist;
 
 	public void deleteFlight(Flight flight);
 
