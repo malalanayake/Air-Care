@@ -40,8 +40,8 @@ public class PathServiceImpl implements PathService {
 			path.setAirportOut(end);
 
 			path = pathRepository.save(path);
-			//start.getListOfOutPaths().add(path);
-			//end.getListOfInPaths().add(path);
+			// start.getListOfOutPaths().add(path);
+			// end.getListOfInPaths().add(path);
 
 		} else {
 			ResourceBundle resourceBundle = ResourceBundle.getBundle(
@@ -65,6 +65,11 @@ public class PathServiceImpl implements PathService {
 	@Override
 	public void delete(Path path) {
 		pathRepository.delete(path);
+	}
+
+	@Override
+	public Path getPathById(Long id) {
+		return pathRepository.getPathById(id);
 	}
 
 }

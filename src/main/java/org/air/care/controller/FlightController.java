@@ -44,8 +44,8 @@ public class FlightController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView processAddNewFlightForm(
 			@ModelAttribute("newFlight") @Valid Flight flightToBeAdded,
-			BindingResult result, HttpServletRequest request, Locale locale){
-		
+			BindingResult result, HttpServletRequest request, Locale locale) {
+
 		ModelAndView modelAndView = new ModelAndView();
 
 		if (result.hasErrors()) {
@@ -54,16 +54,17 @@ public class FlightController {
 			return modelAndView;
 		}
 		try {
-		flightService.saveFlight(flightToBeAdded, locale);
-		} catch(ExceptionResourceAlredyExist ex) {
-			FieldError error = new FieldError("newFlight", "flightNumber", ex.getMessage());
+			flightService.saveFlight(flightToBeAdded, locale);
+		} catch (ExceptionResourceAlredyExist ex) {
+			FieldError error = new FieldError("newFlight", "flightNumber",
+					ex.getMessage());
 			result.addError(error);
 			modelAndView.addObject("airlines", flightService.getAllAirLines());
 			modelAndView.setViewName("/admin/addFlight");
 			return modelAndView;
-			
+
 		}
-		modelAndView.setViewName("/client/home");
-		return modelAndView;		
+		modelAndView.setViewName("/admin/adminHome");
+		return modelAndView;
 	}
 }

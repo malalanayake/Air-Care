@@ -19,4 +19,6 @@ public interface PathRepository extends CrudRepository<Path, Long> {
 	@Query("Select a from Path a where airportIn=:start and airportOut=:end")
 	public Path findPathByAirports(@Param("start") Airport start,
 			@Param("end") Airport end);
+	
+	public Path getPathById(Long id);
 }

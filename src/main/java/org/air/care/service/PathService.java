@@ -15,6 +15,8 @@ import org.air.care.model.Path;
  */
 public interface PathService {
 
+	public Path getPathById(Long id);
+	
 	public Path save(Airport start, Airport end, Locale locale)
 			throws ExceptionResourceAlredyExist;
 

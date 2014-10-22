@@ -70,4 +70,9 @@ public class FlightServiceImpl implements FlightService {
 	public String[] getAllAirLines() {
 		return Constant.AIRLINES;
 	}
+
+	@Override
+	public List<Flight> getAllFlight() {
+		return (List<Flight>) flightRepository.findAll();
+	}
 }

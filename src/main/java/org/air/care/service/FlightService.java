@@ -28,5 +28,7 @@ public interface FlightService {
 	public void updateFlight(Flight flight);
 	
 	public String[] getAllAirLines();
+	
+	public List<Flight> getAllFlight();
 
 }

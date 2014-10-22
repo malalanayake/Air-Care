@@ -39,6 +39,19 @@
 							</form:select>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2 col-lg-2" for="flight"><spring:message
+								code="addSchedule.form.flight.label" /></label>
+						<div class="col-lg-10">
+							<form:select path="flight.id">
+								<c:forEach var="flightNum" items="${flightNums}">
+									<form:option value="${flightNum.key}">${flightNum.value}</form:option>
+								</c:forEach>
+
+							</form:select>
+						</div>
+					</div>
 
 
 					<div class="form-group">

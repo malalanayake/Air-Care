@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
  * @author B.Pirasanth
  *
@@ -27,7 +25,10 @@ public class Schedule {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	Path path;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	Flight flight;
+
 	// @DateTimeFormat(pattern = "MM/dd/yyyy hh:mm a")
 	Date date;
 	int seatCount;
@@ -64,4 +65,11 @@ public class Schedule {
 		this.path = path;
 	}
 
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 }
