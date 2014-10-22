@@ -55,7 +55,8 @@
 					<label class="control-label col-lg-2 col-lg-2" for="latitude"><spring:message
 							code="register.airport.latitude" /></label>
 					<div class="col-lg-10">
-						<form:input type="text" path="latitude" id="latitude" />
+						<form:input disabled="true" type="text" path="latitude"
+							id="latitude" />
 					</div>
 				</div>
 
@@ -63,7 +64,8 @@
 					<label class="control-label col-lg-2 col-lg-2" for="longitude"><spring:message
 							code="register.airport.longitude" /></label>
 					<div class="col-lg-10">
-						<form:input type="text" path="longitude" id="longitude" />
+						<form:input disabled="true" type="text" path="longitude"
+							id="longitude" />
 					</div>
 				</div>
 
@@ -71,8 +73,8 @@
 					<label class="control-label col-lg-2 col-lg-2"><spring:message
 							text="" /></label>
 					<div class="col-lg-10">
-						<form:button id="submit" value="Register Airport"
-							name="Register Airport">
+						<form:button id="submit" class="btn btn-primary"
+							value="Register Airport" name="Register Airport">
 							<spring:message code="register.airport.registerbutton" />
 						</form:button>
 					</div>
@@ -81,16 +83,18 @@
 				<script>
 					$('#us2').locationpicker({
 						location : {
-							latitude : 46.15242437752303,
-							longitude : 2.7470703125
+							latitude : 41.534133,
+							longitude : -93.658796
 						},
 						radius : 0,
+						zoom : 15,
 						inputBinding : {
 							latitudeInput : $('#latitude'),
 							longitudeInput : $('#longitude'),
 							locationNameInput : $('#location')
 						},
-						enableAutocomplete : true
+						enableAutocomplete : true,
+						enableReverseGeocode : true,
 					});
 				</script>
 			</fieldset>
