@@ -8,9 +8,11 @@ import java.util.Locale;
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.Airport;
+import org.air.care.model.Flight;
 import org.air.care.model.Path;
 import org.air.care.model.User;
 import org.air.care.service.AirportService;
+import org.air.care.service.FlightService;
 import org.air.care.service.PathService;
 import org.air.care.service.UserService;
 import org.junit.Test;
@@ -40,6 +42,9 @@ public class PopulateData {
 
 	@Autowired
 	PathService pathService;
+
+	@Autowired
+	FlightService flightService;
 
 	@Test
 	@Rollback(false)
@@ -225,4 +230,55 @@ public class PopulateData {
 		}
 	}
 
+	@Test
+	@Rollback(false)
+	public void populateFlightsAndPaths() {
+		Flight flightA = new Flight();
+		flightA.setAirline("SL001");
+		flightA.setFlightNumber("FS0013");
+
+		try {
+			flightA = flightService.saveFlight(flightA, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
+
+		assertNotNull(flightA.getId());
+
+		Flight flightB = new Flight();
+		flightB.setAirline("DL001");
+		flightB.setFlightNumber("KB0123");
+
+		try {
+			flightB = flightService.saveFlight(flightB, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
+
+		assertNotNull(flightB.getId());
+
+		Flight flightC = new Flight();
+		flightC.setAirline("AA056");
+		flightC.setFlightNumber("KS1234");
+
+		try {
+			flightC = flightService.saveFlight(flightC, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
+
+		assertNotNull(flightC.getId());
+
+		Flight flightD = new Flight();
+		flightD.setAirline("KA056");
+		flightD.setFlightNumber("GH1234");
+
+		try {
+			flightD = flightService.saveFlight(flightD, Locale.getDefault());
+		} catch (ExceptionResourceAlredyExist e) {
+			e.printStackTrace();
+		}
+
+		assertNotNull(flightD.getId());
+	}
 }
