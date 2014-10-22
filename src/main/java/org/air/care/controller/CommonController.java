@@ -96,4 +96,9 @@ public class CommonController {
 					response, Locale.CHINESE);
 		}
 	}
+
+	@RequestMapping(value = "/flights-routes", method = RequestMethod.GET)
+	public String getFlightRoutes() {
+		return "/flightsRoutes";
+	}
 }

@@ -68,7 +68,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<c:url value="/" />"><i
-						class="glyphicon glyphicon-home"></i>Home</a></li>
+						class="glyphicon glyphicon-home"></i> Home </a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
@@ -82,6 +82,10 @@
 
 				<!-- Admin Grated -->
 				<sec:authorize ifAnyGranted="ROLE_ADMIN">
+					<li><a href="<c:url value="/schedule/add" />"><i
+							class="glyphicon glyphicon-tasks"></i> Schedule </a></li>
+					<li><a href="<c:url value="/path/add" />"><i
+							class="glyphicon glyphicon-circle-arrow-up"></i> Path </a></li>
 					<li><a href="<c:url value="/flight/add" />"><i
 							class="glyphicon glyphicon-plane"></i> Flight </a></li>
 					<li><a href="<c:url value="/airport/add" />"><i
