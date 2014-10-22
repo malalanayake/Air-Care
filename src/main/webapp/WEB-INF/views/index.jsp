@@ -8,6 +8,8 @@
 <link
 	href="<c:url value="/resources/js/datepicker/css/datepicker.css"/>"
 	rel="stylesheet">
+<link href="<c:url value="/resources/css/jqgrid/ui.jqgrid.css"/>"
+	rel="stylesheet" />
 </head>
 <body>
 	<c:import url="/WEB-INF/views/layout/_header.jsp"></c:import>
@@ -61,14 +63,25 @@
 					<div class="col-lg-6">
 						<div>
 							<input type="submit" id="btnSearch" class="btn btn-primary"
-								value="<spring:message text="Search" />" />
+								value="<spring:message text="Search" />"
+								onclick="generateGrid();" />
 						</div>
+						<br /> <br />
+					</div>
+
+
+					<div class="col-lg-12">
+						<div>
+							<table id="grid_id">
+							</table>
+						</div>
+						<div id="gridpager"></div>
 					</div>
 
 
 				</div>
 			</div>
-			
+
 			<c:url value="/airport" var="baseurl"></c:url>
 			<input id="baseurl" type="hidden" value="${baseurl}" />
 
@@ -79,6 +92,9 @@
 	<script
 		src="<c:url value="/resources/js/datepicker/js/bootstrap-datepicker.js" />"></script>
 	<script src="<c:url value="/resources/js/datepicker/datepicker.js" />"></script>
+	<script src="<c:url value="/resources/js/jqgrid/grid.locale-en.js" />"></script>
+	<script
+		src="<c:url value="/resources/js/jqgrid/jquery.jqGrid.min.js" />"></script>
 	<script src="<c:url value="/resources/js/aircare.js" />"></script>
 </body>
 </html>

@@ -10,13 +10,11 @@ function madeAjaxCall(identifier) {
 	$.ajax({
 		url : baseurl + "/getFilteredAirports",
 		type : "post",
-
 		cache : false,
 		data : 'filter=' + filter,
 		success : function(response) {
-			//console.log(response);
-			availableAirports = response.split(':');
-			console.log(availableAirports);
+			availableAirports = response;
+			// console.log(availableAirports);			
 			refreshOriginSearch(identifier);
 		},
 		error : function(e) {
@@ -36,4 +34,26 @@ function refreshOriginSearch(identifier) {
 	$("#" + identifier).autocomplete({
 		source : availableAirports
 	});
+}
+
+function generateGrid() {
+    jQuery("#grid_id").jqGrid(
+                    {
+                            url : 'post-json.json',
+                            datatype : "json",
+                            colNames : [ 'Origin', 'Distination', 'Departure Date' ],
+                            colModel :
+                                    [
+                                            {name : 'amount', index : 'amount', align : "right"},
+                                            {name : 'tax', index : 'tax', align : "right" },
+                                            {name : 'note', index : 'note', sortable : false}
+                                    ],
+                            rowNum : 10,
+                            rowList : [ 10, 20, 30 ],
+                            pager : '#gridpager',
+                            sortname : 'id',
+                            sortorder : "desc",
+				            multiselect : false
+                    }
+    );
 }

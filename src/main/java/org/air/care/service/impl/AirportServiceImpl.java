@@ -10,10 +10,8 @@ import org.air.care.model.Airport;
 import org.air.care.repository.AirportRepository;
 import org.air.care.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 /**
  * Airport service implementation class

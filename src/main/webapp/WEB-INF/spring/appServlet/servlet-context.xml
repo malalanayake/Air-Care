@@ -56,4 +56,18 @@
 		<beans:property name="defaultLocale" value="en" />
 	</beans:bean>
 
+	<beans:bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<beans:property name="defaultViews">
+			<beans:list>
+				<beans:ref bean="jsonView" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="jsonView"
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+		<beans:property name="prettyPrint" value="true" />
+	</beans:bean>
+
 </beans:beans>

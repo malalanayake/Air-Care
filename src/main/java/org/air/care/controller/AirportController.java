@@ -1,14 +1,19 @@
 package org.air.care.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
+import org.air.care.model.Path;
 import org.air.care.service.AirportService;
+import org.air.care.service.PathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,7 +42,8 @@ public class AirportController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String addAirport(@ModelAttribute("newAirport") Airport airport) {
+	public String addAirport(@ModelAttribute("newAirport") Airport airport,
+			Model model) {
 		return "/admin/addAirport";
 	}
 
@@ -69,14 +75,12 @@ public class AirportController {
 	}
 
 	@RequestMapping(value = "/getFilteredAirports", method = RequestMethod.POST)
-	public @ResponseBody String getFilteredAirports(
+	public @ResponseBody List<String> getFilteredAirports(
 			@RequestParam("filter") String filter) {
-		StringBuilder sb = new StringBuilder();
+		List<String> names = new ArrayList<String>();
 		for (Airport airport : airportService.filterAirports(filter + "%")) {
-			sb.append(airport.getName() + ":");
+			names.add(airport.getName());
 		}
-
-		return sb.length() > 0 ? sb.toString().substring(0, sb.length() - 1)
-				: sb.toString();
+		return names;
 	}
 }
