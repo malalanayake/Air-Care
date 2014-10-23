@@ -15,7 +15,7 @@
 	<div class="content-section">
 		<div class="container">
 			<h2 class="section-heading">
-				<spring:message text="Admin Home" />
+				<spring:message code="adminhome.title.label"/>
 				<br>
 			</h2>
 		</div>

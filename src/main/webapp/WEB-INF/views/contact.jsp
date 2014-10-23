@@ -29,7 +29,7 @@
 							<h4 class="media-heading">Amila Nagendirapillai</h4>
 							namila23@gmail.com
 						</div>
-						<a href="www.linkedin.com/in/amilanagendirapillai
+						<a href="https://www.linkedin.com/in/amilanagendirapillai
 ">www.linkedin.com/in/amilanagendirapillai
 						</a>
 
@@ -45,7 +45,7 @@
 							<h4 class="media-heading">Pirasanth Balachandran</h4>
 							bpirasanth@gmail.com
 						</div>
-						<a href="www.linkedin.com/in/bpirasanth">www.linkedin.com/in/bpirasanth</a>
+						<a href="https://www.linkedin.com/in/bpirasanth">www.linkedin.com/in/bpirasanth</a>
 					</div></li>
 
 
