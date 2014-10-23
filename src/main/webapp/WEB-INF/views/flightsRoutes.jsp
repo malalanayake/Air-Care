@@ -25,6 +25,13 @@ html, body, #map-canvas {
 
 	var line;
 	function initialize() {
+		var dataArray = [ "41.974162, -87.90732100000002",
+				"41.534133, -93.658796", "33.640728, -84.42770000000002",
+				"41.991943, -93.62194799999997" ];
+		initializeData(dataArray)
+	}
+
+	function initializeData(dataArray) {
 
 		var mapOptions = {
 			zoom : 5,
@@ -35,11 +42,18 @@ html, body, #map-canvas {
 		var map = new google.maps.Map(document.getElementById('map-canvas'),
 				mapOptions);
 
-		var lineCoordinates = [
+		var arrayLength = dataArray.length;
+		var lineCoordinates = new Array(arrayLength);
+		for (var i = 0; i < arrayLength; i++) {
+			var s = dataArray[i].split(",");
+			lineCoordinates[i] = new google.maps.LatLng(s[0], s[1]);
+		}
+
+		/*var lineCoordinates = [
 				new google.maps.LatLng(41.974162, -87.90732100000002),
 				new google.maps.LatLng(41.534133, -93.658796),
 				new google.maps.LatLng(41.991943, -93.62194799999997),
-				new google.maps.LatLng(33.640728, -84.42770000000002) ];
+				new google.maps.LatLng(33.640728, -84.42770000000002) ];*/
 
 		// Define the symbol, using one of the predefined paths ('CIRCLE')
 		// supplied by the Google Maps JavaScript API.
@@ -61,30 +75,6 @@ html, body, #map-canvas {
 
 		animateCircle();
 
-		/* var mapOptions = {
-			zoom : 5,
-			center : new google.maps.LatLng(37.09024, -95.71289100000001),
-			mapTypeId : google.maps.MapTypeId.TERRAIN
-		};
-
-		var map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
-
-		var flightPlanCoordinates = [
-				new google.maps.LatLng(41.974162, -87.90732100000002),
-				new google.maps.LatLng(41.534133, -93.658796),
-				new google.maps.LatLng(41.991943, -93.62194799999997),
-				new google.maps.LatLng(33.640728, -84.42770000000002) ];
-		var flightPath = new google.maps.Polyline({
-			path : flightPlanCoordinates,
-			geodesic : true,
-			strokeColor : '#FF0000',
-			strokeOpacity : 1.0,
-			strokeWeight : 3
-		});
-
-		flightPath.setMap(map);
-		 */
 	}
 
 	// Use the DOM setInterval() function to change the offset of the symbol

@@ -97,8 +97,24 @@ public class CommonController {
 		}
 	}
 
+	/**
+	 * Get flight routs
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/flights-routes", method = RequestMethod.GET)
 	public String getFlightRoutes() {
 		return "/flightsRoutes";
 	}
+
+	/**
+	 * Get Contact
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String contact() {
+		return "/contact";
+	}
+
 }

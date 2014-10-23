@@ -90,8 +90,9 @@
 				<li><a href="<c:url value="/" />"><i
 						class="glyphicon glyphicon-home"></i> <spring:message
 							code="_head.home.label" /> </a></li>
-				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
-						Contact </a></li>
+				<li><a href="<c:url value="/contact" />"><i
+						class="glyphicon glyphicon-envelope"></i> <spring:message
+							code="_head.contact.label" /> </a></li>
 
 				<!-- Client Grated -->
 				<sec:authorize ifAnyGranted="ROLE_CLIENT">
