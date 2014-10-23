@@ -14,7 +14,9 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Air Care</h1>
+				<h1>
+					<spring:message code="login.heading.lable" />
+				</h1>
 				<p></p>
 			</div>
 		</div>
@@ -24,7 +26,9 @@
 			<div class="col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Please sign in</h3>
+						<h3 class="panel-title">
+							<spring:message code="login.input.message.lable" />
+						</h3>
 					</div>
 					<div class="panel-body">
 						<c:if test="${not empty error}">
@@ -37,16 +41,19 @@
 							method="post">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="User Name"
+									<input class="form-control"
+										placeholder="<spring:message code="login.input.username.lable" />"
 										name='j_username' type="text">
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Password"
+									<input class="form-control"
+										placeholder="<spring:message code="login.input.password.lable" />"
 										name='j_password' type="password" value="">
 								</div>
 								<input class="btn btn-lg btn-success btn-block" type="submit"
-									value="Login"> <input type="hidden"
-									name="${_csrf.parameterName}" value="${_csrf.token}" />
+									value="<spring:message code="login.button.login.lable" />">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
 							</fieldset>
 						</form>
 					</div>
