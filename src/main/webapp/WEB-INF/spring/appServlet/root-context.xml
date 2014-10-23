@@ -28,7 +28,7 @@
 			access="ROLE_ADMIN" />
 		<security:intercept-url pattern="/path/**"
 			access="ROLE_ADMIN" />
-		<security:intercept-url pattern="/schedule/**"
+		<security:intercept-url pattern="/schedule/add"
 			access="ROLE_ADMIN" />
 
 		<security:form-login login-page="/login"

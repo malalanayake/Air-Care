@@ -52,7 +52,8 @@
 								</div>
 								<input class="btn btn-lg btn-success btn-block" type="submit"
 									value="<spring:message code="login.button.login.lable" />">
-								<input type="hidden" name="${_csrf.parameterName}"
+								<br /> <a href="<c:url value="/"/>">Back to Home</a> <input
+									type="hidden" name="${_csrf.parameterName}"
 									value="${_csrf.token}" />
 							</fieldset>
 						</form>
