@@ -5,6 +5,8 @@
 <html>
 <head>
 <title>Client Home</title>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <link
 	href="<c:url value="/resources/js/datepicker/css/datepicker.css"/>"
 	rel="stylesheet">
@@ -14,37 +16,7 @@ html, body, #map-canvas {
 }
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<script>
-	function initialize() {
 
-		var mapOptions = {
-			zoom : 5,
-			center : new google.maps.LatLng(37.09024, -95.71289100000001),
-			mapTypeId : google.maps.MapTypeId.TERRAIN
-		};
-
-		var map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
-
-		var flightPlanCoordinates = [
-				new google.maps.LatLng(41.974162, -87.90732100000002),
-				new google.maps.LatLng(41.534133, -93.658796),
-				new google.maps.LatLng(41.991943, -93.62194799999997),
-				new google.maps.LatLng(33.640728, -84.42770000000002) ];
-		var flightPath = new google.maps.Polyline({
-			path : flightPlanCoordinates,
-			geodesic : true,
-			strokeColor : '#FF0000',
-			strokeOpacity : 1.0,
-			strokeWeight : 3
-		});
-
-		flightPath.setMap(map);
-
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/layout/_header.jsp"></c:import>
@@ -104,32 +76,11 @@ html, body, #map-canvas {
 				</div>
 			</div>
 
-			<div id="result" class="col-lg-8">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Route</th>
-							<th>Flight No</th>
-							<th>Ari Line Name</th>
-							<th>Departure Time</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Chicago > Ceder Rapids</td>
-							<td>UL1234</td>
-							<td>Delta</td>
-							<td>10/22/2014 5:41 PM</td>
-						</tr>
-					<tbody>
+			<div id="result" class="col-lg-4">
 
-					</tbody>
-				</table>
 			</div>
 
-			<div class="col-lg-4" id="map-canvas"></div>
+			<div class="col-lg-8" id="map-canvas"></div>
 			<c:url value="/airport" var="baseurl"></c:url>
 			<input id="baseurl" type="hidden" value="${baseurl}" />
 

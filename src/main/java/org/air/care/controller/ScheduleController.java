@@ -15,12 +15,14 @@ import javax.validation.Valid;
 
 import org.air.care.model.Flight;
 import org.air.care.model.Path;
+import org.air.care.model.PossiblePaths;
 import org.air.care.model.Schedule;
 import org.air.care.model.grid.GridModel;
 import org.air.care.service.AirportGraphService;
 import org.air.care.service.AirportService;
 import org.air.care.service.FlightService;
 import org.air.care.service.PathService;
+import org.air.care.service.PossiblePathsService;
 import org.air.care.service.ScheduleService;
 import org.joda.time.DateTimeComparator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,9 @@ public class ScheduleController {
 
 	@Autowired
 	AirportService airportService;
+
+	@Autowired
+	PossiblePathsService possiblePathsService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addSchedule(
@@ -138,25 +143,34 @@ public class ScheduleController {
 			@RequestParam("destination") String destination,
 			@RequestParam("departureDate") Date departureDate) {
 
-		// airportGraphService.populate();
-
-		// List<List<Airport>> possiblePathsList = airportGraphService
-		// .findAllPossiblePaths(airportService.getByName(origin),
-		// airportService.getByName(destination));
-
-		List<Schedule> avaliableSchedules = scheduleService.getAll();
+		List<PossiblePaths> possiblePathsList = possiblePathsService
+				.getAllPossiblePaths(origin, destination);
+		// List<Schedule> avaliableSchedules = scheduleService.getAll();
 		List<GridModel> gridModels = new ArrayList<GridModel>();
 
-		for (Schedule schedule : avaliableSchedules) {
-			if ((DateTimeComparator.getDateOnlyInstance().compare(
-					departureDate, schedule.getDate()) == 0)) {
-				GridModel gridModel = new GridModel();
-				gridModel.setFlightNo(schedule.getFlight().getFlightNumber());
-				gridModel.setAirlineName(schedule.getFlight().getAirline());
-				gridModel.setDepatureTime(schedule.getDate());
+		GridModel model;
+		for (PossiblePaths possiblePaths : possiblePathsList) {
+			model = new GridModel();
+			StringBuilder sbPath = new StringBuilder();
+			StringBuilder sbLatLng = new StringBuilder();
+			for (String possiblePath : possiblePaths.getPath()) {
+				sbPath.append(possiblePath.split(",")[0] + " > ");
+				sbLatLng.append(possiblePath.split(",")[1] + ","
+						+ possiblePath.split(",")[2] + "|");
 
-				gridModels.add(gridModel);
 			}
+			if (sbPath.length() > 3)
+				model.setPath(sbPath.toString().substring(0,
+						sbPath.length() - 3));
+			else
+				model.setPath(sbPath.toString());
+			
+			if (sbLatLng.length() > 1)
+				model.setLatLngs(sbLatLng.toString().substring(0,
+						sbLatLng.length() - 1));
+			else
+				model.setLatLngs(sbLatLng.toString());
+			gridModels.add(model);
 		}
 
 		return gridModels;
