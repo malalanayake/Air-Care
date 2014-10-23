@@ -6,7 +6,7 @@
 		<div class="row">
 			<p class="copyright text-muted small">Copyright &copy; Air-Care
 				2014. All Rights Reserved</p>
-				<a >Contact Us</a>
+				<a href="<c:url value="/contact" />"> Contact Us</a>
 		</div>
 	</div>
 </footer>
