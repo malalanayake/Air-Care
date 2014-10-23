@@ -68,7 +68,7 @@ public class PassengerController {
 		
 		passengerService.savePassenger(passengerToBeAdded);
 		
-		return "/client/home";
+		return "/index";
 	}
 
 }
