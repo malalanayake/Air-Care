@@ -49,6 +49,10 @@ public class User {
 
 	@NotEmpty(message = "{NotEmpty}")
 	private String answer;
+	
+	public User() {
+		roles = new ArrayList<String>();
+	}
 
 	public Long getId() {
 		return id;
