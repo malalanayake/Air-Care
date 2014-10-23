@@ -14,11 +14,9 @@ function madeAjaxCall(identifier) {
 		data : 'filter=' + filter,
 		success : function(response) {
 			availableAirports = response;
-			// console.log(availableAirports);			
 			refreshOriginSearch(identifier);
 		},
 		error : function(e) {
-			// console.log(e);
 			alert('Error while request..');
 		}
 	});
@@ -36,24 +34,25 @@ function refreshOriginSearch(identifier) {
 	});
 }
 
-function generateGrid() {
-    jQuery("#grid_id").jqGrid(
-                    {
-                            url : 'post-json.json',
-                            datatype : "json",
-                            colNames : [ 'Origin', 'Distination', 'Departure Date' ],
-                            colModel :
-                                    [
-                                            {name : 'amount', index : 'amount', align : "right"},
-                                            {name : 'tax', index : 'tax', align : "right" },
-                                            {name : 'note', index : 'note', sortable : false}
-                                    ],
-                            rowNum : 10,
-                            rowList : [ 10, 20, 30 ],
-                            pager : '#gridpager',
-                            sortname : 'id',
-                            sortorder : "desc",
-				            multiselect : false
-                    }
-    );
+function search() {
+	var origin = $("#originSearch").val();
+	var destination = $("#destinationSearch").val();
+	var departureDate = $("#departureDate").val();
+	var baseurl = $("#scheduleurl").val();
+	
+	$.ajax({
+		url : baseurl + "/getFilteredSchedules",
+		type : "post",
+		cache : false,
+		data : 'origin=' + origin + "&destination="
+		+ destination + "&departureDate=" + $("#departureDate").val(),
+		success : function(response) {
+			console.log(response)
+		},
+		error : function(response) {
+			console.log(e);
+			alert('Error while request..');
+		}
+	});
 }
+

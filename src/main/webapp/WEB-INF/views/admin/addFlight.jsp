@@ -15,7 +15,8 @@
 	<div class="content-section">
 		<div class="container">
 			<h2 class="section-heading">
-				Flight Registration<br>
+				<spring:message code="register.flight.title" />
+				<br>
 			</h2>
 
 			<form:form commandName="newFlight" class="form-horizontal">

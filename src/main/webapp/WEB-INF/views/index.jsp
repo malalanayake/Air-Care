@@ -8,14 +8,9 @@
 <link
 	href="<c:url value="/resources/js/datepicker/css/datepicker.css"/>"
 	rel="stylesheet">
-<link href="<c:url value="/resources/css/jqgrid/ui.jqgrid.css"/>"
-	rel="stylesheet" />
 <style>
 html, body, #map-canvas {
 	height: 50%;
-	margin: 0px;
-	padding: 0px;
-	margin: 0px;
 }
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -53,12 +48,16 @@ html, body, #map-canvas {
 </head>
 <body>
 	<c:import url="/WEB-INF/views/layout/_header.jsp"></c:import>
-	<div id="map-canvas"></div>
 	<div class="content-section">
 		<div class="container">
+			<div class="container">
+				<h2 class="section-heading">
+					Welcome to Air Care <br />
+				</h2>
+			</div>
 			<div>
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-3">
 						<label for="lastName"><spring:message text="Origin" /></label>
 						<div>
 							<input type="text" id="originSearch" value=""
@@ -66,7 +65,7 @@ html, body, #map-canvas {
 						</div>
 					</div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-3">
 						<label for="lastName"><spring:message text="Distination" /></label>
 						<div>
 							<input type="text" id="destinationSearch" value=""
@@ -74,7 +73,7 @@ html, body, #map-canvas {
 						</div>
 					</div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-3">
 						<label for="departureDate"><spring:message
 								text="Departure Date" /></label>
 						<div>
@@ -82,37 +81,56 @@ html, body, #map-canvas {
 						</div>
 					</div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-3">
 						<label for="arrivalDate"><spring:message
 								text="Arrival Date" /></label>
 						<div>
-							<input type="text" value="" id="arrivalDate">
+							<input type="text" value="" id="arrivalDate" disabled="disabled">
 						</div>
 						<br />
 					</div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-3">
 						<div>
 							<input type="submit" id="btnSearch" class="btn btn-primary"
-								value="<spring:message text="Search" />"
-								onclick="generateGrid();" />
+								onclick="search();" value="<spring:message text="Search" />" />
 						</div>
 						<br /> <br />
 					</div>
-
-					<div class="col-lg-12">
-						<div>
-							<table id="grid_id">
-							</table>
-						</div>
-						<div id="gridpager"></div>
-					</div>
-
 				</div>
 			</div>
 
+			<div id="result" class="col-lg-8">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Route</th>
+							<th>Flight No</th>
+							<th>Ari Line Name</th>
+							<th>Departure Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Chicago -> Ceder Rapids</td>
+							<td>UL1234</td>
+							<td>Delta</td>
+							<td>10/22/2014 5:41 PM</td>
+						</tr>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-lg-4" id="map-canvas"></div>
 			<c:url value="/airport" var="baseurl"></c:url>
 			<input id="baseurl" type="hidden" value="${baseurl}" />
+
+			<c:url value="/schedule" var="scheduleurl"></c:url>
+			<input id="scheduleurl" type="hidden" value="${scheduleurl}" />
 
 		</div>
 	</div>
@@ -120,9 +138,6 @@ html, body, #map-canvas {
 	<script
 		src="<c:url value="/resources/js/datepicker/js/bootstrap-datepicker.js" />"></script>
 	<script src="<c:url value="/resources/js/datepicker/datepicker.js" />"></script>
-	<script src="<c:url value="/resources/js/jqgrid/grid.locale-en.js" />"></script>
-	<script
-		src="<c:url value="/resources/js/jqgrid/jquery.jqGrid.min.js" />"></script>
 	<script src="<c:url value="/resources/js/aircare.js" />"></script>
 </body>
 </html>

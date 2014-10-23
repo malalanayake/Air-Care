@@ -58,10 +58,28 @@
 			<c:url value="/language/" var="lanURL" />
 			<input id="lan" type="hidden" value="${lanURL}" />
 			<c:url value="/index" var="clienHomeURL" />
-			<a class="navbar-brand" href="${clienHomeURL}">Air Care</a> <a
-				onclick="makeAjaxCall('en');" class="navbar-brand">English</a>
-			<c:url value="/language/ch" var="lanChineseURL" />
-			<a onclick="makeAjaxCall('ch');" class="navbar-brand">Chinese</a>
+			
+
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav left">
+				
+					<li><a class="navbar-brand" href="${clienHomeURL}">Air Care</a>
+					<li class="dropdown"><a id="drop" href="#" role="button"
+						class="dropdown-toggle" data-toggle="dropdown">Language <span
+							class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="drop">
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								onclick="makeAjaxCall('en');">English</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								onclick="makeAjaxCall('ch');">Chinese</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- <c:url value="/language/ch" var="lanChineseURL" /> -->
+
+
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -69,8 +87,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<c:url value="/" />"><i
 						class="glyphicon glyphicon-home"></i> Home </a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
+				<li><a href="#"> About </a></li>
+				<li><a href="#"> Services </a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
 						Contact </a></li>
 

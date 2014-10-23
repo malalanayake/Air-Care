@@ -19,8 +19,8 @@ import org.springframework.stereotype.Repository;
 public class InMemoryAirportGraphRepositoryImpl implements
 		InMemoryAirportGraphRepository {
 
-	private static DirectedWeightedGraph<Airport> airportGraph = new DirectedWeightedGraph<Airport>();
-	private static FindAllPaths<Airport> findAirportPaths = new FindAllPaths<Airport>(
+	private DirectedWeightedGraph<Airport> airportGraph = new DirectedWeightedGraph<Airport>();
+	private FindAllPaths<Airport> findAirportPaths = new FindAllPaths<Airport>(
 			airportGraph);
 
 	@Override

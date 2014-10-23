@@ -112,15 +112,7 @@ public class Airport implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
-				+ ((latitude == null) ? 0 : latitude.hashCode());
-		result = prime * result
-				+ ((listOfInPaths == null) ? 0 : listOfInPaths.hashCode());
-		result = prime * result
-				+ ((listOfOutPaths == null) ? 0 : listOfOutPaths.hashCode());
-		result = prime * result
 				+ ((location == null) ? 0 : location.hashCode());
-		result = prime * result
-				+ ((longitude == null) ? 0 : longitude.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -139,30 +131,10 @@ public class Airport implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (latitude == null) {
-			if (other.latitude != null)
-				return false;
-		} else if (!latitude.equals(other.latitude))
-			return false;
-		if (listOfInPaths == null) {
-			if (other.listOfInPaths != null)
-				return false;
-		} else if (!listOfInPaths.equals(other.listOfInPaths))
-			return false;
-		if (listOfOutPaths == null) {
-			if (other.listOfOutPaths != null)
-				return false;
-		} else if (!listOfOutPaths.equals(other.listOfOutPaths))
-			return false;
 		if (location == null) {
 			if (other.location != null)
 				return false;
 		} else if (!location.equals(other.location))
-			return false;
-		if (longitude == null) {
-			if (other.longitude != null)
-				return false;
-		} else if (!longitude.equals(other.longitude))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -171,5 +143,7 @@ public class Airport implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 
 }

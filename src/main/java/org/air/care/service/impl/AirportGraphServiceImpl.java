@@ -10,8 +10,10 @@ import org.air.care.service.AirportService;
 import org.air.care.service.PathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class AirportGraphServiceImpl implements AirportGraphService {
 
 	@Autowired

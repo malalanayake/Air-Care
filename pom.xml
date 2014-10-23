@@ -215,6 +215,11 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.10</version>
 		</dependency>
+		<dependency>
+			<artifactId>joda-time</artifactId>
+			<groupId>joda-time</groupId>
+			<version>1.6</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
