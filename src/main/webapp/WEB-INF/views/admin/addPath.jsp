@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="false"%>
-
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,7 +14,8 @@
 	<div class="content-section">
 		<div class="container">
 			<h2 class="section-heading">
-				Register Path<br>
+				<spring:message code="addSchedule.title.label" />
+				<br />
 			</h2>
 
 			<form:form commandName="newPath" class="form-horizontal">

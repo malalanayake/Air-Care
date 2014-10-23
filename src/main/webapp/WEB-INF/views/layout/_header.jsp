@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix='sec'
 	uri='http://www.springframework.org/security/tags'%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,14 +59,15 @@
 			<c:url value="/language/" var="lanURL" />
 			<input id="lan" type="hidden" value="${lanURL}" />
 			<c:url value="/index" var="clienHomeURL" />
-			
+
 
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav left">
-				
-					<li><a class="navbar-brand" href="${clienHomeURL}">Air Care</a>
+
+					<li><a class="navbar-brand" href="${clienHomeURL}"> <spring:message
+								code="_head.title.label" /></a>
 					<li class="dropdown"><a id="drop" href="#" role="button"
 						class="dropdown-toggle" data-toggle="dropdown">Language <span
 							class="caret"></span></a>
@@ -86,28 +88,32 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<c:url value="/" />"><i
-						class="glyphicon glyphicon-home"></i> Home </a></li>
-				<li><a href="#"> About </a></li>
-				<li><a href="#"> Services </a></li>
+						class="glyphicon glyphicon-home"></i> <spring:message
+							code="_head.home.label" /> </a></li>
 				<li><a href="#"><i class="glyphicon glyphicon-envelope"></i>
 						Contact </a></li>
 
 				<!-- Client Grated -->
 				<sec:authorize ifAnyGranted="ROLE_CLIENT">
 					<li><a href="<c:url value="/passenger/add" />"><i
-							class="glyphicon glyphicon-plus"></i> Passenger </a></li>
+							class="glyphicon glyphicon-plus"></i> <spring:message
+								code="_head.passenger.label" /> </a></li>
 				</sec:authorize>
 
 				<!-- Admin Grated -->
 				<sec:authorize ifAnyGranted="ROLE_ADMIN">
 					<li><a href="<c:url value="/schedule/add" />"><i
-							class="glyphicon glyphicon-tasks"></i> Schedule </a></li>
+							class="glyphicon glyphicon-tasks"></i> <spring:message
+								code="_head.schedule.label" /> </a></li>
 					<li><a href="<c:url value="/path/add" />"><i
-							class="glyphicon glyphicon-circle-arrow-up"></i> Path </a></li>
+							class="glyphicon glyphicon-circle-arrow-up"></i> <spring:message
+								code="_head.path.label" /> </a></li>
 					<li><a href="<c:url value="/flight/add" />"><i
-							class="glyphicon glyphicon-plane"></i> Flight </a></li>
+							class="glyphicon glyphicon-plane"></i> <spring:message
+								code="_head.flight.label" /> </a></li>
 					<li><a href="<c:url value="/airport/add" />"><i
-							class="glyphicon glyphicon-map-marker"></i> Airport </a></li>
+							class="glyphicon glyphicon-map-marker"></i> <spring:message
+								code="_head.airport.label" /> </a></li>
 				</sec:authorize>
 
 				<!-- Any User logged in -->
@@ -130,7 +136,8 @@
 				<!-- User is not logged in -->
 				<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
 					<li><a href="<c:url value="/client/signup" />"><i
-							class="glyphicon glyphicon-user"></i> Sign Up </a></li>
+							class="glyphicon glyphicon-user"></i> <spring:message
+								code="_head.signup.label" /> </a></li>
 					<li><a href="<c:url value="/login" />" data-toggle="tooltip"
 						data-placement="bottom" title="Log-In"><i
 							class="glyphicon glyphicon-log-in"></i></a></li>

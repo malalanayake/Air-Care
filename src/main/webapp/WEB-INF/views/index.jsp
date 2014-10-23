@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page session="false"%>
+<%@ page contentType="text/html;charset=UTF-8" session="false"%>
 <html>
 <head>
 <title>Client Home</title>
@@ -52,13 +52,15 @@ html, body, #map-canvas {
 		<div class="container">
 			<div class="container">
 				<h2 class="section-heading">
-					Welcome to Air Care <br />
+					<spring:message code="welcom.msg" />
+					<br />
 				</h2>
 			</div>
 			<div>
 				<div class="row">
 					<div class="col-lg-3">
-						<label for="lastName"><spring:message text="Origin" /></label>
+						<label for="originSearch"><spring:message
+								code="index.originSearch.label" /></label>
 						<div>
 							<input type="text" id="originSearch" value=""
 								onkeyup="madeAjaxCall('originSearch');">
@@ -66,7 +68,8 @@ html, body, #map-canvas {
 					</div>
 
 					<div class="col-lg-3">
-						<label for="lastName"><spring:message text="Distination" /></label>
+						<label for="destinationSearch"><spring:message
+								code="index.destinationSearch.label" /></label>
 						<div>
 							<input type="text" id="destinationSearch" value=""
 								onkeyup="madeAjaxCall('destinationSearch');">
@@ -75,7 +78,7 @@ html, body, #map-canvas {
 
 					<div class="col-lg-3">
 						<label for="departureDate"><spring:message
-								text="Departure Date" /></label>
+								code="index.departureDate.label" /></label>
 						<div>
 							<input type="text" id="departureDate" value="">
 						</div>
@@ -83,7 +86,7 @@ html, body, #map-canvas {
 
 					<div class="col-lg-3">
 						<label for="arrivalDate"><spring:message
-								text="Arrival Date" /></label>
+								code="index.arrivalDate.label" /></label>
 						<div>
 							<input type="text" value="" id="arrivalDate" disabled="disabled">
 						</div>
@@ -93,7 +96,8 @@ html, body, #map-canvas {
 					<div class="col-lg-3">
 						<div>
 							<input type="submit" id="btnSearch" class="btn btn-primary"
-								onclick="search();" value="<spring:message text="Search" />" />
+								onclick="search();"
+								value="<spring:message code="index.search.label"  />" />
 						</div>
 						<br /> <br />
 					</div>
@@ -114,7 +118,7 @@ html, body, #map-canvas {
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>Chicago -> Ceder Rapids</td>
+							<td>Chicago > Ceder Rapids</td>
 							<td>UL1234</td>
 							<td>Delta</td>
 							<td>10/22/2014 5:41 PM</td>
