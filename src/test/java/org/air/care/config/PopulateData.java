@@ -1,8 +1,10 @@
 package org.air.care.config;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
@@ -10,10 +12,13 @@ import org.air.care.common.security.SecurityConstant;
 import org.air.care.model.Airport;
 import org.air.care.model.Flight;
 import org.air.care.model.Path;
+import org.air.care.model.PossiblePaths;
 import org.air.care.model.User;
+import org.air.care.service.AirportGraphService;
 import org.air.care.service.AirportService;
 import org.air.care.service.FlightService;
 import org.air.care.service.PathService;
+import org.air.care.service.PossiblePathsService;
 import org.air.care.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +50,12 @@ public class PopulateData {
 
 	@Autowired
 	FlightService flightService;
+
+	@Autowired
+	AirportGraphService airportGraphService;
+
+	@Autowired
+	PossiblePathsService possiblePathService;
 
 	@Test
 	@Rollback(false)
@@ -230,6 +241,9 @@ public class PopulateData {
 		}
 	}
 
+	/**
+	 * Populate the possible paths
+	 */
 	@Test
 	@Rollback(false)
 	public void populateFlightsAndPaths() {
@@ -280,5 +294,45 @@ public class PopulateData {
 		}
 
 		assertNotNull(flightD.getId());
+	}
+
+	@Test
+	@Rollback(false)
+	public void addPossiblePaths() {
+		airportGraphService.populate();
+		List<Path> list = pathService.getAll();
+		for (Path path : list) {
+			for (List<Airport> ss : airportGraphService.findAllPossiblePaths(
+					path.getAirportIn(), path.getAirportOut())) {
+				PossiblePaths possiblePaths = new PossiblePaths();
+				ArrayList<String> arrayList = new ArrayList<String>();
+				for (Airport s : ss) {
+					arrayList.add(s.getName() + "," + s.getLatitude() + ","
+							+ s.getLongitude());
+					System.out.print(s.getName() + "->");
+				}
+				possiblePaths.setSource(path.getAirportIn().getName());
+				possiblePaths.setDestination(path.getAirportOut().getName());
+				possiblePaths.setPath(arrayList);
+				possiblePathService.save(possiblePaths);
+				System.out.println();
+			}
+
+		}
+
+		Airport miami = airportService.getByName("Miami International");
+		Airport sanFrancisco = airportService.getByName("San Francisco");
+
+		assertNotNull(miami);
+		assertNotNull(sanFrancisco);
+		List<PossiblePaths> paths = possiblePathService.getAllPossiblePaths(
+				"Miami International", "San Francisco");
+		System.out.println("=========Test======");
+		for (PossiblePaths ss : paths) {
+			for (String s : ss.getPath()) {
+				System.out.println(s);
+			}
+		}
+
 	}
 }

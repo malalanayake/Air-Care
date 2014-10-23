@@ -2,11 +2,14 @@ package org.air.care.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import org.air.care.common.exception.ExceptionResourceAlredyExist;
 import org.air.care.model.Airport;
+import org.air.care.model.PossiblePaths;
+import org.air.care.repository.PossiblePathsRepository;
 import org.air.care.service.AirportGraphService;
 import org.air.care.service.AirportService;
 import org.air.care.service.PathService;
@@ -15,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +46,9 @@ public class AirportGraphServiceImplTest {
 
 	@Autowired
 	PathService pathService;
+
+	@Autowired
+	PossiblePathsRepository possiblePathRepository;
 
 	@Test
 	public void testInMemoryData() throws ExceptionResourceAlredyExist {
@@ -84,19 +91,6 @@ public class AirportGraphServiceImplTest {
 		assertNotNull(desmoin);
 		for (List<Airport> ss : airportGraphService.findAllPossiblePaths(
 				chicargo, desmoin)) {
-			for (Airport s : ss) {
-				System.out.print(s.getName() + "->");
-			}
-			System.out.println();
-		}
-
-		Airport miami = airportService.getByName("Miami International");
-		Airport sanFrancisco = airportService.getByName("San Francisco");
-
-		assertNotNull(miami);
-		assertNotNull(sanFrancisco);
-		for (List<Airport> ss : airportGraphService.findAllPossiblePaths(miami,
-				sanFrancisco)) {
 			for (Airport s : ss) {
 				System.out.print(s.getName() + "->");
 			}
